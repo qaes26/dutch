@@ -1,1043 +1,1699 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="scroll-smooth">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أمان | بوابة تقديم طلبات الحماية والمنح - ألمانيا</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts (Cairo for Arabic, Inter for Latin) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0f7ff',
-                            100: '#e0effe',
-                            500: '#0284c7',
-                            600: '#0369a1',
-                            700: '#075985',
-                            900: '#0c4a6e',
-                        },
-                        germany: {
-                            black: '#111111',
-                            red: '#DD0000',
-                            gold: '#FFCC00'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Cairo', 'Inter', 'sans-serif'],
-                    }
-                }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بوابة طلبات الحماية الإنسانية وإعادة التوطين - ألمانيا</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts: Tajawal & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            tajawal: ['Tajawal', 'sans-serif'],
+            inter: ['Inter', 'sans-serif']
+          },
+          colors: {
+            germany: {
+              black: '#1f242b',
+              red: '#d92638',
+              gold: '#f59e0b',
+              navy: '#0f172a',
+              softblue: '#e0f2fe'
             }
+          }
         }
-    </script>
-    <style>
-        body {
-            font-family: 'Cairo', 'Inter', sans-serif;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .file-drop-zone {
-            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%2338BDF8FF' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        .dark .glass-card {
-            background: rgba(15, 23, 42, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-    </style>
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Tajawal', 'Inter', sans-serif;
+    }
+    body[dir="ltr"] {
+      font-family: 'Inter', 'Tajawal', sans-serif;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      .print-only {
+        display: block !important;
+      }
+    }
+  </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col selection:bg-amber-100 selection:text-amber-900">
 
-    <!-- Navbar / Header -->
-    <header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm transition-all">
-        <!-- Top German Accent Stripe -->
-        <div class="h-1.5 w-full flex">
-            <div class="w-1/3 bg-black"></div>
-            <div class="w-1/3 bg-red-600"></div>
-            <div class="w-1/3 bg-amber-400"></div>
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm border-b border-slate-200">
+    <!-- Quick Exit Safety Bar -->
+    <div class="bg-rose-900 text-white text-xs py-1.5 px-4 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-shield-halved text-amber-400"></i>
+        <span data-i18n="safety_bar">لحمايتك وسلامتك: إذا كنت بمكان غير آمن، يمكنك مغادرة الصفحة فوراً بضغطة زر.</span>
+      </div>
+      <button onclick="emergencyExit()" class="bg-rose-700 hover:bg-rose-800 text-white text-xs px-3 py-1 rounded font-bold transition flex items-center gap-1.5 shadow-sm">
+        <i class="fa-solid fa-person-running"></i>
+        <span data-i18n="quick_exit">خروج سريع وآمن (Google)</span>
+      </button>
+    </div>
+
+    <!-- Navigation Header -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <!-- Logo & German Flag Accents -->
+        <div class="flex items-center gap-3.5">
+          <div class="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center shadow-md relative overflow-hidden flex-shrink-0 border border-slate-700">
+            <div class="absolute inset-0 flex flex-col">
+              <div class="h-1/3 bg-black"></div>
+              <div class="h-1/3 bg-red-600"></div>
+              <div class="h-1/3 bg-amber-400"></div>
+            </div>
+            <i class="fa-solid fa-landmark text-white text-xl relative z-10 drop-shadow-md"></i>
+          </div>
+          <div>
+            <div data-i18n="portal_sub" class="text-xs uppercase tracking-wider text-slate-500 font-bold">بوابة الدعم الإنساني والقانوني</div>
+            <h1 data-i18n="portal_title" class="text-lg sm:text-xl font-black text-slate-900 leading-tight">برنامج الحماية وإعادة التوطين بألمانيا</h1>
+          </div>
         </div>
+
+        <!-- Desktop Navigation Items -->
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+          <a href="#wizard-section" class="hover:text-rose-600 transition flex items-center gap-1.5">
+            <i class="fa-solid fa-file-signature text-xs"></i>
+            <span data-i18n="nav_apply">تقديم طلب جديد</span>
+          </a>
+          <a href="#tracking-section" class="hover:text-rose-600 transition flex items-center gap-1.5">
+            <i class="fa-solid fa-magnifying-glass text-xs"></i>
+            <span data-i18n="nav_track">متابعة حالة طلب</span>
+          </a>
+          <a href="#legal-info" class="hover:text-rose-600 transition flex items-center gap-1.5">
+            <i class="fa-solid fa-scale-balanced text-xs"></i>
+            <span data-i18n="nav_legal">المسارات القانونية</span>
+          </a>
+          <a href="#faq-section" class="hover:text-rose-600 transition flex items-center gap-1.5">
+            <i class="fa-regular fa-circle-question text-xs"></i>
+            <span data-i18n="nav_faq">الأسئلة الشائعة</span>
+          </a>
+        </nav>
+
+        <!-- CTA & Language Toggle Switch -->
+        <div class="flex items-center gap-2.5">
+          <!-- Language Selector Switcher -->
+          <div class="inline-flex rounded-xl bg-slate-100 p-1 border border-slate-300 text-xs font-bold">
+            <button id="langBtnAr" onclick="switchLanguage('ar')" class="px-2.5 py-1 rounded-lg transition bg-white text-slate-900 shadow-sm flex items-center gap-1">
+              <span>العربية</span>
+            </button>
+            <button id="langBtnDe" onclick="switchLanguage('de')" class="px-2.5 py-1 rounded-lg transition text-slate-600 hover:text-slate-900 flex items-center gap-1">
+              <span>Deutsch</span>
+            </button>
+          </div>
+
+          <button onclick="scrollToApply()" class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white hover:bg-slate-800 px-4 py-2.5 rounded-xl font-bold text-sm shadow hover:shadow-md transition flex items-center gap-2">
+            <i class="fa-solid fa-passport text-amber-400"></i>
+            <span data-i18n="cta_start_btn" class="hidden sm:inline">بدء تقديم الطلب</span>
+            <span data-i18n="cta_start_short" class="sm:hidden">تقديم</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white py-16 lg:py-20 overflow-hidden">
+      <!-- Ambient light effect -->
+      <div class="absolute -top-24 -right-24 w-96 h-96 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-8 space-y-6 text-right">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-amber-400 text-xs font-semibold">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <span data-i18n="hero_badge">بوابة مساعدة للأشخاص المعرضين للخطر والاضطهاد والحروب</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
+              <span data-i18n="hero_title_1">أمانك وحياتك أولوية إنسانية.</span><br>
+              <span data-i18n="hero_title_2" class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-rose-400">
+                طريقك لطلب الحماية واللجوء الإنساني في ألمانيا.
+              </span>
+            </h2>
+
+            <p data-i18n="hero_description" class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+              تتيح هذه المنصة لجميع الفئات التي تعاني من انعدام الأمان في بلدانها (بسبب النزاعات، الاضطهاد السياسي، حرية الرأي، التهديد الأمني) تسجيل وتقييم بياناتهم، وتجهيز ملف اللجوء وإعادة التوطين بالتعاون مع المنظمات المعتمدة ووفق اتفاقية جنيف للاجئين والقانون الألماني (AufenthG).
+            </p>
+
+            <!-- Legal clarity notification -->
+            <div class="bg-slate-800/90 border-r-4 rtl:border-r-4 ltr:border-l-4 rtl:border-l-0 border-amber-500 p-4 rounded-xl text-slate-300 text-xs sm:text-sm leading-normal flex items-start gap-3">
+              <i class="fa-solid fa-circle-info text-amber-400 text-lg mt-0.5 flex-shrink-0"></i>
+              <div>
+                <strong data-i18n="legal_notice_tag" class="text-white">تنويه قانوني هام:</strong> 
+                <span data-i18n="legal_notice_body">الجنسية الألمانية لا تُمنح بشكل فوري ومباشر من الخارج، بل يتم التقديم أولاً على حماية إنسانية / لجوء أو قبول إنساني (Aufnahmeprogramm)، والتي تمنحك إقامة قانونية آمنة في ألمانيا تؤهلك لاحقاً للحصول على الجنسية بعد الاستقرار واستيفاء الشروط القانونية.</span>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-4 pt-2">
+              <button onclick="scrollToApply()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-7 py-3.5 rounded-xl shadow-lg hover:shadow-amber-500/20 transition flex items-center gap-2.5">
+                <i class="fa-solid fa-fingerprint text-base"></i>
+                <span data-i18n="hero_start_btn">بدء ملء استمارة الحماية</span>
+              </button>
+              <a href="#tracking-section" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold px-6 py-3.5 rounded-xl transition flex items-center gap-2">
+                <i class="fa-solid fa-clock-rotate-left text-amber-400"></i>
+                <span data-i18n="hero_track_btn">متابعة طلب سابق برقم التتبع</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Feature Cards Quick Column -->
+          <div class="lg:col-span-4 grid gap-4">
+            <div class="bg-slate-800/80 backdrop-blur border border-slate-700 p-5 rounded-2xl flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl flex-shrink-0">
+                <i class="fa-solid fa-lock"></i>
+              </div>
+              <div>
+                <h4 data-i18n="feat_1_title" class="font-bold text-white text-base">تشفير وسرية تامة</h4>
+                <p data-i18n="feat_1_desc" class="text-slate-400 text-xs">البيانات محمية ولا تُشارك مع سلطات بلدك الأصلي نهائياً.</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-800/80 backdrop-blur border border-slate-700 p-5 rounded-2xl flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-xl flex-shrink-0">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+              </div>
+              <div>
+                <h4 data-i18n="feat_2_title" class="font-bold text-white text-base">دعم الفئات الأكثر ضعفاً</h4>
+                <p data-i18n="feat_2_desc" class="text-slate-400 text-xs">أولوية للأشخاص المهددة حياتهم، النساء، والأطفال، والناشطين.</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-800/80 backdrop-blur border border-slate-700 p-5 rounded-2xl flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-xl flex-shrink-0">
+                <i class="fa-solid fa-passport"></i>
+              </div>
+              <div>
+                <h4 data-i18n="feat_3_title" class="font-bold text-white text-base">مسار التجنيس المستقبلي</h4>
+                <p data-i18n="feat_3_desc" class="text-slate-400 text-xs">الحصول على الإقامة يقود للجنسية الألمانية بعد 3 إلى 5 سنوات.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="wizard-section" class="py-16 bg-slate-100 border-b border-slate-200">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
         
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo & Branding -->
-                <div class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-700 via-slate-900 to-red-600 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
-                        <i class="fa-solid font-bold text-xl fa-shield-halved"></i>
-                    </div>
-                    <div>
-                        <span class="text-xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-brand-700 to-slate-800 dark:from-white dark:to-slate-300">
-                            AMAN <span class="text-xs px-2 py-0.5 rounded-full bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400 font-bold border border-red-200 dark:border-red-900">DE</span>
-                        </span>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold" id="navSubtitle">بوابة طلبات الحماية والمنح الألمانية</p>
-                    </div>
-                </div>
-
-                <!-- Controls: Language, Theme, Panic Exit -->
-                <div class="flex items-center gap-2 sm:gap-4">
-                    <!-- Language Switcher Dropdown -->
-                    <div class="relative inline-block text-left">
-                        <button id="langMenuBtn" onclick="toggleLangDropdown()" class="flex items-center gap-2 px-3 py-2 text-sm font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition">
-                            <i class="fa-solid fa-globe text-brand-600 dark:text-brand-400"></i>
-                            <span id="currentLangLabel">العربية</span>
-                            <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
-                        </button>
-                        <div id="langDropdown" class="hidden absolute left-0 rtl:left-auto rtl:right-0 mt-2 w-40 rounded-xl bg-white dark:bg-slate-800 shadow-xl border border-slate-200 dark:border-slate-700 py-2 z-50 animate-fadeIn">
-                            <button onclick="changeLanguage('ar')" class="w-full text-right rtl:text-right ltr:text-left px-4 py-2 text-sm font-medium hover:bg-brand-50 dark:hover:bg-slate-700/60 flex items-center gap-3">
-                                <span class="text-base">🇸🇾</span> العربية
-                            </button>
-                            <button onclick="changeLanguage('de')" class="w-full text-right rtl:text-right ltr:text-left px-4 py-2 text-sm font-medium hover:bg-brand-50 dark:hover:bg-slate-700/60 flex items-center gap-3">
-                                <span class="text-base">🇩🇪</span> Deutsch
-                            </button>
-                            <button onclick="changeLanguage('en')" class="w-full text-right rtl:text-right ltr:text-left px-4 py-2 text-sm font-medium hover:bg-brand-50 dark:hover:bg-slate-700/60 flex items-center gap-3">
-                                <span class="text-base">🇬🇧</span> English
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Theme Toggle -->
-                    <button onclick="toggleDarkMode()" class="p-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition text-slate-600 dark:text-slate-300">
-                        <i id="themeIcon" class="fa-solid fa-moon"></i>
-                    </button>
-
-                    <!-- Quick Emergency Exit Button (Safety Feature) -->
-                    <button onclick="quickSafetyExit()" title="خروج سريع وآمن" class="px-3 py-2 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-lg shadow-sm flex items-center gap-1.5 transition">
-                        <i class="fa-solid fa-person-running"></i>
-                        <span class="hidden sm:inline" id="quickExitText">خروج سريع</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Body Container -->
-    <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 py-8">
-        
-        <!-- Confidentiality Banner -->
-        <div class="mb-8 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-brand-900 text-white p-6 sm:p-8 shadow-xl relative overflow-hidden">
-            <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-                <div class="space-y-2 max-w-2xl">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold border border-emerald-500/30">
-                        <i class="fa-solid fa-lock text-xs"></i>
-                        <span id="badgeConfidential">تشفير تام وحماية سرية مخصصة</span>
-                    </div>
-                    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight leading-snug" id="heroTitle">
-                        برنامج الاستجابة والمنح المباشرة للحماية – ألمانيا
-                    </h1>
-                    <p class="text-slate-300 text-sm leading-relaxed" id="heroDesc">
-                        نحن نوفر مساراً آمناً ومشفراً لتقديم طلبات اللجوء المباشر والدعم الإنساني لمن هم بعرضة للخطر أو عدم الشعور بالأمان في بلادهم. جميع بياناتك محمية بموجب قانون حماية البيانات الألكاماني GDPR.
-                    </p>
-                </div>
-                <div class="flex-shrink-0 flex items-center gap-3 self-end md:self-auto">
-                    <div class="text-center p-3 bg-white/10 rounded-xl backdrop-blur-sm border border-white/10">
-                        <span class="block text-xl font-bold text-amber-400">2026</span>
-                        <span class="text-[10px] text-slate-300 uppercase font-bold" id="badgeYear">الدورة المفتوحة</span>
-                    </div>
-                </div>
-            </div>
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span data-i18n="wizard_badge" class="text-xs font-bold text-rose-600 uppercase tracking-wider bg-rose-50 border border-rose-200 px-3 py-1 rounded-full">استمارة الحماية الإنسانية</span>
+          <h3 data-i18n="wizard_heading" class="text-2xl sm:text-3xl font-black text-slate-900 mt-3">تقديم ملف طلب الحماية والأمان</h3>
+          <p data-i18n="wizard_subtext" class="text-slate-600 text-sm mt-2">يرجى ملء المعلومات بدقة. يمكنك تقديم الطلب باسم مستعار أو حجب بعض البيانات إن كنت تخشى مراقبة هاتفك.</p>
         </div>
 
-        <!-- Wizard Stepper Navigation -->
-        <div class="mb-8">
-            <div class="flex items-center justify-between max-w-2xl mx-auto px-2 relative">
-                <!-- Connector Bar -->
-                <div class="absolute top-1/2 left-0 right-0 -translate-y-1/2 h-1 bg-slate-200 dark:bg-slate-800 z-0"></div>
-                <div id="stepProgress" class="absolute top-1/2 left-0 right-1/2 -translate-y-1/2 h-1 bg-brand-600 transition-all duration-300 z-0 rtl:right-0 rtl:left-auto" style="width: 0%"></div>
-
-                <!-- Step 1 Circle -->
-                <div class="relative z-10 flex flex-col items-center cursor-pointer" onclick="goToStep(1)">
-                    <div id="stepCircle1" class="w-10 h-10 rounded-full bg-brand-600 text-white font-bold flex items-center justify-center ring-4 ring-slate-50 dark:ring-slate-950 transition">
-                        1
-                    </div>
-                    <span class="text-xs font-semibold mt-2 text-brand-600 dark:text-brand-400" id="stepLabel1">البيانات الشخصية</span>
+        <!-- Wizard Container -->
+        <div class="bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden">
+          
+          <!-- Stepper Header -->
+          <div class="bg-slate-900 text-white p-6 sm:p-8">
+            <div class="grid grid-cols-4 gap-2 sm:gap-4 relative text-center">
+              
+              <!-- Step 1 Indicator -->
+              <div id="step-tab-1" class="step-indicator active-step flex flex-col items-center">
+                <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-amber-500 text-slate-950 font-black flex items-center justify-center text-sm mb-2 shadow transition-all duration-300">
+                  1
                 </div>
+                <span data-i18n="step_1_tab" class="text-xs font-bold text-white">البيانات الأساسية</span>
+              </div>
 
-                <!-- Step 2 Circle -->
-                <div class="relative z-10 flex flex-col items-center cursor-pointer" onclick="goToStep(2)">
-                    <div id="stepCircle2" class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500 font-bold flex items-center justify-center ring-4 ring-slate-50 dark:ring-slate-950 transition">
-                        2
-                    </div>
-                    <span class="text-xs font-semibold mt-2 text-slate-400" id="stepLabel2">أسباب عدم الأمان</span>
+              <!-- Step 2 Indicator -->
+              <div id="step-tab-2" class="step-indicator opacity-50 flex flex-col items-center">
+                <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-slate-800 text-slate-300 font-bold flex items-center justify-center text-sm mb-2 border border-slate-700 transition-all duration-300">
+                  2
                 </div>
+                <span data-i18n="step_2_tab" class="text-xs font-medium text-slate-400">تقييم الخطر</span>
+              </div>
 
-                <!-- Step 3 Circle -->
-                <div class="relative z-10 flex flex-col items-center cursor-pointer" onclick="goToStep(3)">
-                    <div id="stepCircle3" class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500 font-bold flex items-center justify-center ring-4 ring-slate-50 dark:ring-slate-950 transition">
-                        3
-                    </div>
-                    <span class="text-xs font-semibold mt-2 text-slate-400" id="stepLabel3">المستندات والصور</span>
+              <!-- Step 3 Indicator -->
+              <div id="step-tab-3" class="step-indicator opacity-50 flex flex-col items-center">
+                <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-slate-800 text-slate-300 font-bold flex items-center justify-center text-sm mb-2 border border-slate-700 transition-all duration-300">
+                  3
                 </div>
+                <span data-i18n="step_3_tab" class="text-xs font-medium text-slate-400">الارتباط بألمانيا</span>
+              </div>
 
-                <!-- Step 4 Circle -->
-                <div class="relative z-10 flex flex-col items-center cursor-pointer" onclick="goToStep(4)">
-                    <div id="stepCircle4" class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500 font-bold flex items-center justify-center ring-4 ring-slate-50 dark:ring-slate-950 transition">
-                        4
-                    </div>
-                    <span class="text-xs font-semibold mt-2 text-slate-400" id="stepLabel4">المراجعة والإرسال</span>
+              <!-- Step 4 Indicator -->
+              <div id="step-tab-4" class="step-indicator opacity-50 flex flex-col items-center">
+                <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-slate-800 text-slate-300 font-bold flex items-center justify-center text-sm mb-2 border border-slate-700 transition-all duration-300">
+                  4
                 </div>
+                <span data-i18n="step_4_tab" class="text-xs font-medium text-slate-400">المراجعة والإرسال</span>
+              </div>
             </div>
-        </div>
+          </div>
 
-        <!-- Main Form Card -->
-        <div class="glass-card rounded-2xl p-6 sm:p-10 shadow-lg border border-slate-200/80 dark:border-slate-800 transition-all">
-            <form id="grantForm" onsubmit="handleFormSubmit(event)">
-                
-                <!-- STEP 1: Personal Info -->
-                <div id="formStep1" class="space-y-6">
-                    <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
-                        <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2" id="s1Heading">
-                            <i class="fa-solid fa-user-shield text-brand-600"></i>
-                            المعلومات الشخصية وبيانات الاتصال الآمنة
-                        </h2>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" id="s1Sub">يرجى تقديم بياناتك الدقيقة لتسهيل التواصل وإصدار وثائق الحماية المبدئية.</p>
-                    </div>
+          <!-- Wizard Body -->
+          <div class="p-6 sm:p-10">
+            <form id="applicationForm" onsubmit="return false;">
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2" id="lblFullName">الاسم الكامل (كما في جواز السفر/الهوية)</label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 right-0 rtl:right-0 ltr:left-0 ltr:right-auto flex items-center px-3 text-slate-400"><i class="fa-solid fa-id-card"></i></span>
-                                <input type="text" id="fullName" required class="w-full pr-10 rtl:pr-10 ltr:pl-10 ltr:pr-3 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:ring-2 focus:ring-brand-500 outline-none transition" placeholder="مثال: محمد أحمد العلي">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2" id="lblEmail">البريد الإلكتروني للتحقق (الآمن)</label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 right-0 rtl:right-0 ltr:left-0 ltr:right-auto flex items-center px-3 text-slate-400"><i class="fa-solid fa-envelope"></i></span>
-                                <input type="email" id="email" required class="w-full pr-10 rtl:pr-10 ltr:pl-10 ltr:pr-3 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:ring-2 focus:ring-brand-500 outline-none transition" placeholder="name@secure-mail.com">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2" id="lblPhone">رقم التواصل المباشر / واتساب آمن</label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 right-0 rtl:right-0 ltr:left-0 ltr:right-auto flex items-center px-3 text-slate-400"><i class="fa-solid fa-phone"></i></span>
-                                <input type="tel" id="phone" required class="w-full pr-10 rtl:pr-10 ltr:pl-10 ltr:pr-3 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:ring-2 focus:ring-brand-500 outline-none transition" placeholder="+963 ... / +964 ...">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2" id="lblNationality">الجنسية الحالية</label>
-                            <input type="text" id="nationality" required class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:ring-2 focus:ring-brand-500 outline-none transition" placeholder="مثال: سوري، عراقي، يمني، أفعاني...">
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2" id="lblCurrentCountry">بلد الإقامة الحالي</label>
-                            <input type="text" id="currentCountry" required class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:ring-2 focus:ring-brand-500 outline-none transition" placeholder="البلد الذي تتواجد فيه الآن">
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2" id="lblBirthDate">تاريخ الميلاد</label>
-                            <input type="date" id="birthDate" required class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:ring-2 focus:ring-brand-500 outline-none transition">
-                        </div>
-                    </div>
+              <!-- STEP 1: Personal Identification & Contact -->
+              <div id="step-1" class="space-y-6">
+                <div class="border-b border-slate-100 pb-4">
+                  <h4 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-user-shield text-amber-500"></i>
+                    <span data-i18n="step_1_title">الخطوة 1: المعلومات الشخصية وموقع التواجد الحالي</span>
+                  </h4>
+                  <p data-i18n="step_1_subtitle" class="text-slate-500 text-xs mt-1">تستخدم هذه المعلومات للتواصل الآمن وتحديد حالتك القانونية.</p>
                 </div>
 
-                <!-- STEP 2: Safety Reason & Situation -->
-                <div id="formStep2" class="hidden space-y-6">
-                    <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
-                        <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2" id="s2Heading">
-                            <i class="fa-solid fa-triangle-exclamation text-amber-500"></i>
-                            تفاصيل الحالة والدواعي الإنسانية / عدم الشعور بالأمان
-                        </h2>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" id="s2Sub">يرجى توضيح الظروف أو المخاطر التي تمنعك من البقاء آامناً في بلدك الأصلي.</p>
-                    </div>
-
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2" id="lblThreatCategory">نوع الخطر الأساسي</label>
-                            <select id="threatType" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:ring-2 focus:ring-brand-500 outline-none transition">
-                                <option value="political" id="optPolitical">تهديد سياسي أو ملاحقة فكرية</option>
-                                <option value="conflict" id="optConflict">نزاع مسلح وتدهور أمني في منطقة السكن</option>
-                                <option value="human_rights" id="optHR">انتهاك حقوق الإنسان وحرية التعبير</option>
-                                <option value="discrimination" id="optDiscrim">تمييز أو اضطهاد عائلي / مجتمعي شديد</option>
-                                <option value="other" id="optOther">ظروف قاهرة أخرى</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <label class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300" id="lblReasonDetail">شرح وافٍ عن المخاطر الشخصية</label>
-                                <!-- AI Assistant Helper Button -->
-                                <button type="button" onclick="generateAISummary()" class="text-xs font-semibold text-brand-600 dark:text-brand-400 hover:underline flex items-center gap-1">
-                                    <i class="fa-solid fa-wand-magic-sparkles text-amber-500"></i>
-                                    <span id="btnAISummary">صياغة مساعدة بالذكاء الاصطناعي</span>
-                                </button>
-                            </div>
-                            <textarea id="reasonDetails" rows="5" required class="w-full p-4 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:ring-2 focus:ring-brand-500 outline-none transition leading-relaxed" placeholder="اكتب بالتفصيل الأسباب التي تجعلك في خطر، أو التهديدات التي تعرضت لها..."></textarea>
-                        </div>
-
-                        <!-- Safety Options Checkboxes -->
-                        <div class="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 space-y-3">
-                            <span class="block text-xs font-bold text-amber-900 dark:text-amber-300 uppercase tracking-wide" id="lblSafetyNeeds">احتياجات الأمان الفورية:</span>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-slate-700 dark:text-slate-300">
-                                <label class="flex items-center gap-2 cursor-pointer">
-                                    <input type="checkbox" id="needRelocation" class="rounded text-brand-600 focus:ring-brand-500">
-                                    <span id="chkRelocate">أحتاج نقل سريع إلى منطقة آمنة</span>
-                                </label>
-                                <label class="flex items-center gap-2 cursor-pointer">
-                                    <input type="checkbox" id="needLegalAid" class="rounded text-brand-600 focus:ring-brand-500">
-                                    <span id="chkLegal">أحتاج إلى استشارة قانونية ألمانية معتمدة</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">
+                      <span data-i18n="label_full_name">الاسم الكامل (أو الاسم المستعار للسلامة)</span>
+                      <span class="text-rose-500">*</span>
+                    </label>
+                    <input type="text" id="applicantName" required placeholder="مثال: أحمد عبد الله" data-i18n-placeholder="placeholder_name" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm transition">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">
+                      <span data-i18n="label_nationality">الجنسية الحالية / بلد المنشأ</span>
+                      <span class="text-rose-500">*</span>
+                    </label>
+                    <select id="applicantNationality" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm transition bg-white">
+                      <!-- Populated via i18n switcher -->
+                    </select>
+                  </div>
                 </div>
 
-                <!-- STEP 3: Images & Documents Attachments -->
-                <div id="formStep3" class="hidden space-y-6">
-                    <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
-                        <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2" id="s3Heading">
-                            <i class="fa-solid fa-file-image text-brand-500"></i>
-                            إرفاق الصور والوثائق الثبوتية
-                        </h2>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" id="s3Sub">يمكنك إرفاق صور جواز السفر، الهوية الشخصية، أو أوراق الإثبات والتهديدات (JPG, PNG, PDF).</p>
-                    </div>
-
-                    <!-- Dropzone -->
-                    <div class="file-drop-zone p-8 rounded-2xl text-center bg-slate-50/50 dark:bg-slate-900/50 border-2 border-dashed border-brand-400 dark:border-brand-600/50 hover:bg-brand-50/30 transition cursor-pointer relative" onclick="document.getElementById('fileInput').click()" id="dropZone">
-                        <input type="file" id="fileInput" multiple accept="image/*,.pdf" class="hidden" onchange="handleFileSelect(event)">
-                        
-                        <div class="w-16 h-16 rounded-full bg-brand-100 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 mx-auto flex items-center justify-center mb-3 text-2xl">
-                            <i class="fa-solid fa-cloud-arrow-up"></i>
-                        </div>
-                        <h3 class="text-base font-bold text-slate-800 dark:text-slate-200" id="dropTitle">اسحب الصور أو انقر هنا للاختيار</h3>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" id="dropHint">يدعم صيغ الصور (PNG, JPG, WEBP) حتى حجم 10 ميغابايت لكل ملف</p>
-                        <button type="button" class="mt-4 px-4 py-2 bg-brand-600 text-white rounded-lg text-xs font-bold shadow hover:bg-brand-700 transition" id="btnSelectFiles">
-                            اختيار الصور والملفات
-                        </button>
-                    </div>
-
-                    <!-- File & Image Previews List -->
-                    <div id="attachmentsContainer" class="space-y-3">
-                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500" id="attachedTitle">الصور والملفات المرفقة:</h4>
-                        <div id="fileListGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                            <!-- Dynamically added files appear here -->
-                            <div id="emptyFilesNotice" class="col-span-full py-6 text-center text-slate-400 text-sm border border-dashed border-slate-200 dark:border-slate-800 rounded-xl">
-                                <i class="fa-regular fa-image text-2xl block mb-2 opacity-50"></i>
-                                <span id="noFilesYet">لم يتم إرفاق أي صورة أو مستند بعد</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Gemini AI Document Analysis / Translation Feature -->
-                    <div id="aiVisionCard" class="hidden p-4 rounded-xl bg-gradient-to-r from-purple-900/20 via-brand-900/10 to-slate-900/20 border border-purple-500/30 space-y-3">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-microchip text-purple-400 text-lg"></i>
-                                <span class="text-xs font-bold text-purple-300 uppercase tracking-wide" id="aiVisionTitle">فحص وترجمة المستند المرفق بالذكاء الاصطناعي (Gemini Vision)</span>
-                            </div>
-                            <button type="button" onclick="analyzeFirstImageWithGemini()" id="btnAnalyzeImg" class="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold rounded-lg shadow flex items-center gap-1.5 transition">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                                <span id="btnScanText">تحليل واستخراج النص</span>
-                            </button>
-                        </div>
-                        <div id="aiAnalysisResult" class="hidden text-xs text-slate-200 bg-black/40 p-3 rounded-lg border border-purple-500/20 leading-relaxed max-h-40 overflow-y-auto">
-                            <!-- Result output -->
-                        </div>
-                    </div>
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">
+                      <span data-i18n="label_dob">تاريخ الميلاد</span>
+                      <span class="text-rose-500">*</span>
+                    </label>
+                    <input type="date" id="applicantDob" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm transition">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">
+                      <span data-i18n="label_current_location">أين تتواجد حالياً؟</span>
+                      <span class="text-rose-500">*</span>
+                    </label>
+                    <select id="applicantCurrentLocation" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm transition bg-white">
+                      <!-- Populated via i18n switcher -->
+                    </select>
+                  </div>
                 </div>
 
-                <!-- STEP 4: Review & Submit -->
-                <div id="formStep4" class="hidden space-y-6">
-                    <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
-                        <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2" id="s4Heading">
-                            <i class="fa-solid fa-check-double text-emerald-500"></i>
-                            مراجعة الطلب والتوقيع الرقمي M-Sign
-                        </h2>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" id="s4Sub">يرجى التأكد من صحة البيانات قبل إرسالها إلى لجنة الدراسة المباشرة.</p>
-                    </div>
-
-                    <!-- Summary Card -->
-                    <div class="bg-slate-100 dark:bg-slate-900/80 rounded-xl p-5 border border-slate-200 dark:border-slate-800 space-y-3 text-sm">
-                        <div class="flex justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
-                            <span class="text-slate-500" id="sumNameLbl">الاسم الكامل:</span>
-                            <span class="font-bold" id="sumName">-</span>
-                        </div>
-                        <div class="flex justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
-                            <span class="text-slate-500" id="sumEmailLbl">البريد الإلكتروني:</span>
-                            <span class="font-bold" id="sumEmail">-</span>
-                        </div>
-                        <div class="flex justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
-                            <span class="text-slate-500" id="sumPhoneLbl">رقم التواصل:</span>
-                            <span class="font-bold" id="sumPhone">-</span>
-                        </div>
-                        <div class="flex justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
-                            <span class="text-slate-500" id="sumCountryLbl">بلد الإقامة:</span>
-                            <span class="font-bold" id="sumCountry">-</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-slate-500" id="sumFilesLbl">عدد المستندات والصور المرفقة:</span>
-                            <span class="font-bold text-brand-600 dark:text-brand-400" id="sumFilesCount">0 ملفات</span>
-                        </div>
-                    </div>
-
-                    <!-- Declaration & Consent -->
-                    <div class="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 space-y-3">
-                        <label class="flex items-start gap-3 cursor-pointer">
-                            <input type="checkbox" id="acceptTerms" required class="mt-1 rounded text-emerald-600 focus:ring-emerald-500">
-                            <span class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed" id="lblTerms">
-                                أقوم بتقديم هذه البيانات بمحض إرادتي للحصول على الحماية والمنحة الألمانية، وأقرّ بصحة المعلومات الواردة أعلاه تحت مظلة حماية الخصوصية وقانون GDPR الأوروبي.
-                            </span>
-                        </label>
-                    </div>
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">
+                      <span data-i18n="label_email">وسيلة تواصل مشفرة (بريد إلكتروني أو سيجنال)</span>
+                      <span class="text-rose-500">*</span>
+                    </label>
+                    <input type="email" id="applicantEmail" required placeholder="name@secure-mail.com" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm transition" dir="ltr">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">
+                      <span data-i18n="label_phone">رقم الهاتف (مع فتح الخط الدولي ويفضل واتساب/تيليغرام)</span>
+                    </label>
+                    <input type="tel" id="applicantPhone" placeholder="+963 / +967 / +249 ..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm transition" dir="ltr">
+                  </div>
                 </div>
 
-                <!-- Wizard Navigation Buttons -->
-                <div class="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-slate-800 mt-8">
-                    <button type="button" id="btnPrev" onclick="changeStep(-1)" class="hidden px-5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 font-bold text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition items-center gap-2">
-                        <i class="fa-solid fa-arrow-right rtl:rotate-0 ltr:rotate-180"></i>
-                        <span id="btnPrevText">السابق</span>
-                    </button>
-
-                    <div class="mr-auto rtl:mr-auto rtl:ml-0 ltr:ml-auto ltr:mr-0 flex items-center gap-3">
-                        <button type="button" id="btnNext" onclick="changeStep(1)" class="px-6 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm shadow-md shadow-brand-500/20 transition flex items-center gap-2">
-                            <span id="btnNextText">التالي</span>
-                            <i class="fa-solid fa-arrow-left rtl:rotate-0 ltr:rotate-180"></i>
-                        </button>
-
-                        <button type="submit" id="btnSubmit" class="hidden px-8 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold text-sm shadow-lg shadow-emerald-500/20 transition items-center gap-2">
-                            <i class="fa-solid fa-paper-plane"></i>
-                            <span id="btnSubmitText">إرسال الطلب بشكل آمن</span>
-                        </button>
-                    </div>
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 flex items-center gap-2 text-amber-900 text-xs">
+                  <i class="fa-solid fa-user-secret text-amber-600 text-sm flex-shrink-0"></i>
+                  <span data-i18n="anon_tip">هل تحتاج لإخفاء هويتك تماماً في المرحلة الأولى؟ سنزودك برمز مشفر دون الحاجة لتسجيل اسمك الحقيقي في السجلات العامة.</span>
                 </div>
+              </div>
+
+              <!-- STEP 2: Risk & Safety Evaluation -->
+              <div id="step-2" class="space-y-6 hidden">
+                <div class="border-b border-slate-100 pb-4">
+                  <h4 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-triangle-exclamation text-rose-500"></i>
+                    <span data-i18n="step_2_title">الخطوة 2: تقييم أسباب عدم الأمان والتهديدات</span>
+                  </h4>
+                  <p data-i18n="step_2_subtitle" class="text-slate-500 text-xs mt-1">تساعد هذه البيانات الفرق القانونية في تحديد أولوية الحماية العاجلة والتصنيف الإنساني.</p>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-2">
+                    <span data-i18n="label_threat_reasons">ما هو السبب الرئيسي لشعورك بانعدام الأمان؟ (يمكن تحديد أكثر من خيار)</span>
+                    <span class="text-rose-500">*</span>
+                  </label>
+                  <div class="grid sm:grid-cols-2 gap-3 text-sm">
+                    <label class="flex items-start gap-2.5 p-3 rounded-xl border border-slate-200 hover:border-amber-400 bg-slate-50 cursor-pointer transition">
+                      <input type="checkbox" name="threatReason" value="نزاع مسلح وحرب عامة" class="mt-1 rounded text-amber-500 focus:ring-amber-400">
+                      <div>
+                        <span data-i18n="threat_war_title" class="font-bold text-slate-800">حروب ونزاعات مسلحة</span>
+                        <p data-i18n="threat_war_desc" class="text-xs text-slate-500">قصف، دمار للبنية التحتية، انعدام الأمن العام للجميع.</p>
+                      </div>
+                    </label>
+
+                    <label class="flex items-start gap-2.5 p-3 rounded-xl border border-slate-200 hover:border-amber-400 bg-slate-50 cursor-pointer transition">
+                      <input type="checkbox" name="threatReason" value="ملاحقة سياسية وحرية رأي" class="mt-1 rounded text-amber-500 focus:ring-amber-400">
+                      <div>
+                        <span data-i18n="threat_politics_title" class="font-bold text-slate-800">ملاحقة سياسية أو حرية رأي</span>
+                        <p data-i18n="threat_politics_desc" class="text-xs text-slate-500">معارضة، صحافة، نشاط مجتمعي أو حقوقي مهدد بالاعتقال.</p>
+                      </div>
+                    </label>
+
+                    <label class="flex items-start gap-2.5 p-3 rounded-xl border border-slate-200 hover:border-amber-400 bg-slate-50 cursor-pointer transition">
+                      <input type="checkbox" name="threatReason" value="اضطهاد عرقي أو ديني أو فئوي" class="mt-1 rounded text-amber-500 focus:ring-amber-400">
+                      <div>
+                        <span data-i18n="threat_discrim_title" class="font-bold text-slate-800">اضطهاد عقائدي، ديني، أو عرقي</span>
+                        <p data-i18n="threat_discrim_desc" class="text-xs text-slate-500">الاستهداف بسبب الانتماء لأقلية معينة أو معتقد.</p>
+                      </div>
+                    </label>
+
+                    <label class="flex items-start gap-2.5 p-3 rounded-xl border border-slate-200 hover:border-amber-400 bg-slate-50 cursor-pointer transition">
+                      <input type="checkbox" name="threatReason" value="عنف قائم على النوع الاجتماعي أو تهديد مباشر بالقتل" class="mt-1 rounded text-amber-500 focus:ring-amber-400">
+                      <div>
+                        <span data-i18n="threat_gender_title" class="font-bold text-slate-800">تهديدات مباشرة أو عنف أسري/عشائري</span>
+                        <p data-i18n="threat_gender_desc" class="text-xs text-slate-500">تهديدات بالقتل، ثأر، أو عنف موجه ضد النساء والأطفال.</p>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">
+                    <span data-i18n="label_threat_desc">صف باختصار وضعك الأمني والتهديدات التي تواجهها</span>
+                    <span class="text-rose-500">*</span>
+                  </label>
+                  <textarea id="threatDescription" rows="4" required placeholder="اشرح ما حدث معك ولماذا يستحيل عليك البقاء في منطقتك الحالية وما التهديد المباشر لحياتك أو حريتك..." data-i18n-placeholder="placeholder_threat" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm transition custom-scroll"></textarea>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">
+                      <span data-i18n="label_unhcr">هل أنت مسجل رسمياً لدى المفوضية السامية للأمم المتحدة (UNHCR)؟</span>
+                    </label>
+                    <select id="unhcrStatus" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm transition bg-white">
+                      <!-- Options populated dynamically -->
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">
+                      <span data-i18n="label_family_num">هل يرافقك أفراد من العائلة (أطفال، زوج/ة، والدين)؟</span>
+                    </label>
+                    <input type="number" id="familyMembers" min="0" max="15" value="0" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm transition">
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 3: Integration & Connections to Germany -->
+              <div id="step-3" class="space-y-6 hidden">
+                <div class="border-b border-slate-100 pb-4">
+                  <h4 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-network-wired text-sky-500"></i>
+                    <span data-i18n="step_3_title">الخطوة 3: الروابط بألمانيا، المهارات والمستندات</span>
+                  </h4>
+                  <p data-i18n="step_3_subtitle" class="text-slate-500 text-xs mt-1">وجود أقارب، دراسة سابقة، أو لغة يدعم إمكانية الاندماج وتسريع دراسة الملف وفق برامج القبول الإنساني الاتحادية.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">
+                      <span data-i18n="label_relatives">هل لديك أقارب من الدرجة الأولى أو الثانية بألمانيا؟</span>
+                    </label>
+                    <select id="germanyRelatives" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm transition bg-white">
+                      <!-- Populated via i18n -->
+                    </select>
+                  </div>
+
+                  <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">
+                      <span data-i18n="label_german_lang">مستوى إتقان اللغة الألمانية (إن وجد)</span>
+                    </label>
+                    <select id="germanLevel" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm transition bg-white">
+                      <!-- Populated via i18n -->
+                    </select>
+                  </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">
+                      <span data-i18n="label_education">المؤهل الأكاديمي أو المهني</span>
+                    </label>
+                    <select id="educationLevel" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm transition bg-white">
+                      <!-- Populated via i18n -->
+                    </select>
+                  </div>
+
+                  <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">
+                      <span data-i18n="label_id_status">وثائق الهوية المتوفرة لديك حالياً</span>
+                    </label>
+                    <select id="idAvailable" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm transition bg-white">
+                      <!-- Populated via i18n -->
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Simulated Upload Area -->
+                <div class="border-2 border-dashed border-slate-300 rounded-2xl p-6 text-center hover:bg-slate-50 transition">
+                  <div class="w-12 h-12 mx-auto rounded-full bg-slate-100 flex items-center justify-center text-slate-600 mb-3">
+                    <i class="fa-solid fa-cloud-arrow-up text-xl text-slate-700"></i>
+                  </div>
+                  <h5 data-i18n="upload_title" class="text-sm font-bold text-slate-800">إرفاق إثباتات التهديد أو الوثائق الشخصية (اختياري)</h5>
+                  <p data-i18n="upload_desc" class="text-xs text-slate-500 mt-1 max-w-md mx-auto">يمكنك رفع صور أو مستندات (بلاغات، تهديدات، إثبات إقامة، جواز السفر) بصيغ PDF أو JPG أو PNG.</p>
+                  <label class="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-slate-800 text-white rounded-xl text-xs font-bold cursor-pointer hover:bg-slate-700 transition">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span data-i18n="upload_btn">تحديد الملفات</span>
+                    <input type="file" multiple id="fileUploadInput" onchange="handleFileUpload(event)" class="hidden">
+                  </label>
+                  <div id="fileUploadList" class="mt-3 flex flex-wrap gap-2 justify-center text-xs"></div>
+                </div>
+              </div>
+
+              <!-- STEP 4: Review and Submit -->
+              <div id="step-4" class="space-y-6 hidden">
+                <div class="border-b border-slate-100 pb-4">
+                  <h4 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-clipboard-check text-emerald-500"></i>
+                    <span data-i18n="step_4_title">الخطوة 4: مراجعة البيانات والإقرار الأمني</span>
+                  </h4>
+                  <p data-i18n="step_4_subtitle" class="text-slate-500 text-xs mt-1">راجع البيانات المدخلة قبل الإرسال المشفر وتوليد ملف الطلب.</p>
+                </div>
+
+                <!-- Summary Preview Card -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-3 text-sm">
+                  <div class="flex justify-between items-center pb-2 border-b border-slate-200">
+                    <span data-i18n="rev_lbl_name" class="text-slate-500 text-xs">مقدم الطلب:</span>
+                    <strong id="revName" class="text-slate-900">--</strong>
+                  </div>
+                  <div class="flex justify-between items-center pb-2 border-b border-slate-200">
+                    <span data-i18n="rev_lbl_nat" class="text-slate-500 text-xs">الجنسية:</span>
+                    <strong id="revNationality" class="text-slate-900">--</strong>
+                  </div>
+                  <div class="flex justify-between items-center pb-2 border-b border-slate-200">
+                    <span data-i18n="rev_lbl_loc" class="text-slate-500 text-xs">المكان الحالي:</span>
+                    <strong id="revLocation" class="text-slate-900">--</strong>
+                  </div>
+                  <div class="flex justify-between items-center pb-2 border-b border-slate-200">
+                    <span data-i18n="rev_lbl_contact" class="text-slate-500 text-xs">وسيلة التواصل:</span>
+                    <strong id="revEmail" class="text-slate-900" dir="ltr">--</strong>
+                  </div>
+                  <div class="flex justify-between items-center pb-2 border-b border-slate-200">
+                    <span data-i18n="rev_lbl_threats" class="text-slate-500 text-xs">أسباب التهديد المختارة:</span>
+                    <strong id="revThreats" class="text-slate-900 text-xs">--</strong>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span data-i18n="rev_lbl_family" class="text-slate-500 text-xs">أفراد العائلة المرافقين:</span>
+                    <strong id="revFamily" class="text-slate-900">--</strong>
+                  </div>
+                </div>
+
+                <!-- Legal Declarations & Consent -->
+                <div class="space-y-3 bg-white p-4 border border-slate-200 rounded-xl text-xs text-slate-700">
+                  <label class="flex items-start gap-2.5 cursor-pointer">
+                    <input type="checkbox" id="consentLegal" required class="mt-0.5 rounded text-amber-500 focus:ring-amber-400">
+                    <span data-i18n="consent_1">أقر بأن جميع البيانات والوقائع المذكورة في هذه الاستمارة صحيحة وتعبر عن التهديد الفعلي الذي أتعرض له.</span>
+                  </label>
+                  <label class="flex items-start gap-2.5 cursor-pointer">
+                    <input type="checkbox" id="consentPrivacy" required class="mt-0.5 rounded text-amber-500 focus:ring-amber-400">
+                    <span data-i18n="consent_2">أوافق على مراجعة ملفي وتمريره للجهات الحقوقية والإنسانية المعنية ببرامج إعادة التوطين وفق بروتوكولات الحماية المشفرة.</span>
+                  </label>
+                  <label class="flex items-start gap-2.5 cursor-pointer">
+                    <input type="checkbox" id="consentCitizenship" required class="mt-0.5 rounded text-amber-500 focus:ring-amber-400">
+                    <span data-i18n="consent_3">أدرك أن الجنسية الألمانية تتطلب استكمال مسار الحماية القانونية والإقامة في ألمانيا والاندماج ولا تُمنح كوثيقة سفر مباشرة.</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Wizard Controls Buttons -->
+              <div class="mt-8 pt-4 border-t border-slate-200 flex justify-between items-center">
+                <button type="button" id="prevBtn" onclick="prevStep()" class="hidden px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 text-sm font-bold hover:bg-slate-100 transition items-center gap-2">
+                  <i class="fa-solid fa-arrow-right rtl:rotate-0 ltr:rotate-180"></i>
+                  <span data-i18n="btn_prev">السابق</span>
+                </button>
+                <div class="mr-auto rtl:mr-auto rtl:ml-0 ltr:ml-auto ltr:mr-0 flex gap-3">
+                  <button type="button" id="nextBtn" onclick="nextStep()" class="px-6 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-bold hover:bg-slate-800 transition flex items-center gap-2">
+                    <span data-i18n="btn_next">التالي</span>
+                    <i class="fa-solid fa-arrow-left rtl:rotate-0 ltr:rotate-180"></i>
+                  </button>
+                  <button type="button" id="submitBtn" onclick="submitApplication()" class="hidden px-7 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-sm font-black shadow-lg shadow-emerald-600/20 transition flex items-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span data-i18n="btn_submit">إرسال الطلب واعتماد الملف</span>
+                  </button>
+                </div>
+              </div>
 
             </form>
+          </div>
+
         </div>
 
-        <!-- Success Modal (Hidden by default) -->
-        <div id="successModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn">
-            <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-800 text-center space-y-5">
-                <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 rounded-full flex items-center justify-center mx-auto text-3xl shadow-inner">
-                    <i class="fa-solid fa-shield-check"></i>
-                </div>
-                
-                <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white" id="modalSuccessTitle">تم تسليم طلبك بنجاح وبسرية فائقة!</h3>
-                
-                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed" id="modalSuccessDesc">
-                    تم تشفير واستلام بياناتك ومستنداتك بنجاح. سيقوم المستشار المسؤول بمراجعة الملف فوراً والتواصل معك عبر البريد الإلكتروني الآمن.
-                </p>
+      </div>
+    </section>
 
-                <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
-                    <span class="block text-xs text-slate-500 font-semibold uppercase" id="lblRefCode">رقم المرجعية والتتبع الخفي:</span>
-                    <span id="refCodeDisplay" class="font-mono font-bold text-lg text-brand-600 dark:text-brand-400 tracking-wider">DE-2026-89412-SEC</span>
-                </div>
+    <section id="tracking-section" class="py-16 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
+          
+          <!-- Background decoration -->
+          <div class="absolute top-0 left-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-                <button onclick="closeModalAndReset()" class="w-full py-3 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 font-bold rounded-xl hover:opacity-90 transition">
-                    <span id="btnCloseModal">العودة للصفحة الرئيسية</span>
-                </button>
+          <div class="relative z-10 max-w-2xl">
+            <span data-i18n="track_badge" class="text-xs font-bold text-amber-400 uppercase tracking-wider bg-amber-500/20 px-3 py-1 rounded-full border border-amber-500/30">الاستعلام المباشر</span>
+            <h3 data-i18n="track_heading" class="text-2xl sm:text-3xl font-black mt-3">متابعة حالة طلب حماية سابق</h3>
+            <p data-i18n="track_subtext" class="text-slate-300 text-sm mt-2">أدخل الرقم المرجعي لطلبك (مثال: DE-HUM-84920) للاطلاع على المستجدات ومرحلة دراسة الملف.</p>
+
+            <!-- Search input bar -->
+            <div class="mt-6 flex flex-col sm:flex-row gap-3">
+              <div class="relative flex-grow">
+                <i class="fa-solid fa-barcode absolute right-4 rtl:right-4 rtl:left-auto ltr:left-4 ltr:right-auto top-3.5 text-slate-400"></i>
+                <input type="text" id="trackingInput" placeholder="أدخل رقم الطلب المرجعي (e.g., DE-HUM-2026-X)" data-i18n-placeholder="track_placeholder" class="w-full pl-4 pr-11 rtl:pr-11 rtl:pl-4 ltr:pl-11 ltr:pr-4 py-3 rounded-xl bg-slate-800/90 border border-slate-700 text-white placeholder-slate-400 text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none" dir="ltr">
+              </div>
+              <button onclick="checkCaseStatus()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition flex items-center justify-center gap-2 shadow">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span data-i18n="track_query_btn">استعلام فوري</span>
+              </button>
             </div>
+
+            <!-- Demo helper pill -->
+            <div class="mt-3 flex items-center gap-2 text-xs text-slate-400">
+              <span data-i18n="track_demo_tip">يمكنك تجربة الكود التجريبي:</span>
+              <button onclick="fillDemoCode('DE-HUM-98214')" class="text-amber-400 underline hover:text-amber-300 font-mono" dir="ltr">DE-HUM-98214</button>
+              <span data-i18n="track_or">أو</span>
+              <button onclick="fillDemoCode('DE-HUM-45120')" class="text-amber-400 underline hover:text-amber-300 font-mono" dir="ltr">DE-HUM-45120</button>
+            </div>
+          </div>
+
+          <!-- Tracking Result Box (Dynamic) -->
+          <div id="trackingResultBox" class="mt-8 pt-8 border-t border-slate-700/80 hidden">
+            <!-- Populated via Javascript -->
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="legal-info" class="py-16 bg-slate-50 border-y border-slate-200">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span data-i18n="legal_section_badge" class="text-xs font-bold text-slate-500 uppercase tracking-wider bg-slate-200 px-3 py-1 rounded-full">دليل الاستقرار والحماية</span>
+          <h3 data-i18n="legal_section_heading" class="text-2xl sm:text-3xl font-black text-slate-900 mt-3">المسارات الرسمية للحماية والجنسية بألمانيا</h3>
+          <p data-i18n="legal_section_subtext" class="text-slate-600 text-sm mt-2">فهمك الدقيق للقانون يحميك من سماسرة الهجرة والوعود الكاذبة. إليك المسارات الفعلية المعمول بها:</p>
         </div>
 
-    </main>
+        <div class="grid md:grid-cols-3 gap-6">
+          
+          <!-- Card 1 -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+            <div class="w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl mb-4 font-bold">
+              <i class="fa-solid fa-person-shelter"></i>
+            </div>
+            <h4 data-i18n="path_1_title" class="text-lg font-bold text-slate-900 mb-2">1. اللجوء الإنساني واتفاقية جنيف (Asyl)</h4>
+            <p data-i18n="path_1_desc" class="text-slate-600 text-xs leading-relaxed mb-4">
+              مخصص للأفراد الذين يواجهون اضطهاداً مباشراً وشخصياً في بلدانهم بسبب الدين أو الجنسية أو الانتماء السياسي. يمنح حامله حق الإقامة لمدة 3 سنوات قابلة للتجديد مع لم الشمل.
+            </p>
+            <div class="bg-slate-50 p-2.5 rounded-lg text-xs text-slate-700">
+              <i class="fa-solid fa-check text-emerald-500 ml-1 rtl:ml-1 ltr:mr-1"></i>
+              <span data-i18n="path_1_note">المسار للجنسية: بعد 3 إلى 5 سنوات من الإقامة القانونية والاندماج.</span>
+            </div>
+          </div>
 
-    <!-- Footer -->
-    <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-6 transition">
-        <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
-            <div class="flex items-center gap-2">
-                <i class="fa-solid fa-lock text-brand-500"></i>
-                <span id="ftrCopy">&copy; 2026 AMAN Germany Protection Portal. جميع الحقوق محفوظة.</span>
+          <!-- Card 2 -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+            <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl mb-4 font-bold">
+              <i class="fa-solid fa-hands-holding-child"></i>
             </div>
-            <div class="flex items-center gap-4">
-                <a href="#" onclick="quickSafetyExit()" class="hover:underline text-red-500 font-semibold" id="ftrPanic">زر الطوارئ السريع</a>
-                <span>•</span>
-                <span id="ftrPrivacy">سياسة التشفير وحماية البيانات GDPR</span>
+            <h4 data-i18n="path_2_title" class="text-lg font-bold text-slate-900 mb-2">2. الحماية الفرعية (Subsidiärer Schutz)</h4>
+            <p data-i18n="path_2_desc" class="text-slate-600 text-xs leading-relaxed mb-4">
+              تُمنح للأشخاص الفارين من الحروب العامة والنزاعات العسكرية دون الحاجة لإثبات استهداف شخصي مباشر. تمنح إقامة لمدة عام تجدد دورياً مع حق العمل والتعليم.
+            </p>
+            <div class="bg-slate-50 p-2.5 rounded-lg text-xs text-slate-700">
+              <i class="fa-solid fa-check text-emerald-500 ml-1 rtl:ml-1 ltr:mr-1"></i>
+              <span data-i18n="path_2_note">المسار للجنسية: مؤهلة للتجنيس بعد استيفاء شروط سبل العيش واللغة.</span>
             </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+            <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl mb-4 font-bold">
+              <i class="fa-solid fa-plane-arrival"></i>
+            </div>
+            <h4 data-i18n="path_3_title" class="text-lg font-bold text-slate-900 mb-2">3. برامج القبول الإنساني (Aufnahmeprogramme)</h4>
+            <p data-i18n="path_3_desc" class="text-slate-600 text-xs leading-relaxed mb-4">
+              برامج تطلقها الحكومة الاتحادية الألمانية (مثل برنامج أفغانستان أو الكفالات الخاصة للولايات §22/23 AufenthG) لنقل فئات محددة بأمان وسفر رسمي إلى ألمانيا.
+            </p>
+            <div class="bg-slate-50 p-2.5 rounded-lg text-xs text-slate-700">
+              <i class="fa-solid fa-check text-emerald-500 ml-1 rtl:ml-1 ltr:mr-1"></i>
+              <span data-i18n="path_3_note">المسار للجنسية: إقامة سريعة تتيح التقدم للجنسية وفق القانون الحديث.</span>
+            </div>
+          </div>
+
         </div>
-    </footer>
 
-    <!-- Application Logic & Translation Script -->
-    <script>
-        // Global State
-        let currentStep = 1;
-        let currentLang = 'ar';
-        let attachedFiles = [];
+        <!-- Law Reform Info Box -->
+        <div class="mt-8 bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-6 text-white flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2 text-amber-400 text-xs font-bold">
+              <i class="fa-solid fa-scale-balanced"></i>
+              <span data-i18n="reform_tag">تحديث قانون الجنسية الألماني الحديث (StARModG)</span>
+            </div>
+            <h4 data-i18n="reform_title" class="text-base font-bold">تقليص مدة الحصول على الجنسية الألمانية إلى 5 سنوات (و3 سنوات للمتميزين)</h4>
+            <p data-i18n="reform_desc" class="text-slate-300 text-xs max-w-2xl">أصبح القانون الألماني الجديد يسمح بازدواج الجنسية، واختصار سنوات الانتظار للاجئين والمقيمين النظاميين بمجرد تحقيق مستوى لغة B1 والاستقلال المادي.</p>
+          </div>
+          <button onclick="scrollToApply()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold px-5 py-3 rounded-xl whitespace-nowrap transition">
+            <span data-i18n="reform_btn">تقديم ملفك الآن</span>
+          </button>
+        </div>
+      </div>
+    </section>
 
-        // Comprehensive Language Dictionary (Arabic, German, English)
-        const i18n = {
-            ar: {
-                navSubtitle: "بوابة طلبات الحماية والمنح الألمانية",
-                quickExitText: "خروج سريع",
-                badgeConfidential: "تشفير تام وحماية سرية مخصصة",
-                heroTitle: "برنامج الاستجابة والمنح المباشرة للحماية – ألمانيا",
-                heroDesc: "نحن نوفر مساراً آمناً ومشفراً لتقديم طلبات اللجوء المباشر والدعم الإنساني لمن هم بعرضة للخطر أو عدم الشعور بالأمان في بلادهم. جميع بياناتك محمية بموجب قانون حماية البيانات الألماني GDPR.",
-                badgeYear: "الدورة المفتوحة 2026",
-                stepLabel1: "البيانات الشخصية",
-                stepLabel2: "أسباب عدم الأمان",
-                stepLabel3: "المستندات والصور",
-                stepLabel4: "المراجعة والإرسال",
-                s1Heading: "المعلومات الشخصية وبيانات الاتصال الآمنة",
-                s1Sub: "يرجى تقديم بياناتك الدقيقة لتسهيل التواصل وإصدار وثائق الحماية المبدئية.",
-                lblFullName: "الاسم الكامل (كما في جواز السفر/الهوية)",
-                lblEmail: "البريد الإلكتروني للتحقق (الآمن)",
-                lblPhone: "رقم التواصل المباشر / واتساب آمن",
-                lblNationality: "الجنسية الحالية",
-                lblCurrentCountry: "بلد الإقامة الحالي",
-                lblBirthDate: "تاريخ الميلاد",
-                s2Heading: "تفاصيل الحالة والدواعي الإنسانية / عدم الشعور بالأمان",
-                s2Sub: "يرجى توضيح الظروف أو المخاطر التي تمنعك من البقاء آمناً في بلدك الأصلي.",
-                lblThreatCategory: "نوع الخطر الأساسي",
-                optPolitical: "تهديد سياسي أو ملاحقة فكرية",
-                optConflict: "نزاع مسلح وتدهور أمني في منطقة السكن",
-                optHR: "انتهاك حقوق الإنسان وحرية التعبير",
-                optDiscrim: "تمييز أو اضطهاد عائلي / مجتمعي شديد",
-                optOther: "ظروف قاهرة أخرى",
-                lblReasonDetail: "شرح وافٍ عن المخاطر الشخصية",
-                btnAISummary: "صياغة مساعدة بالذكاء الاصطناعي",
-                lblSafetyNeeds: "احتياجات الأمان الفورية:",
-                chkRelocate: "أحتاج نقل سريع إلى منطقة آمنة",
-                chkLegal: "أحتاج إلى استشارة قانونية ألمانية معتمدة",
-                s3Heading: "إرفاق الصور والوثائق الثبوتية",
-                s3Sub: "يمكنك إرفاق صور جواز السفر، الهوية الشخصية، أو أوراق الإثبات والتهديدات (JPG, PNG, PDF).",
-                dropTitle: "اسحب الصور أو انقر هنا للاختيار",
-                dropHint: "يدعم صيغ الصور (PNG, JPG, WEBP) حتى حجم 10 ميغابايت لكل ملف",
-                btnSelectFiles: "اختيار الصور والملفات",
-                attachedTitle: "الصور والملفات المرفقة:",
-                noFilesYet: "لم يتم إرفاق أي صورة أو مستند بعد",
-                aiVisionTitle: "فحص وترجمة المستند المرفق بالذكاء الاصطناعي (Gemini Vision)",
-                btnScanText: "تحليل واستخراج النص",
-                s4Heading: "مراجعة الطلب والتوقيع الرقمي M-Sign",
-                s4Sub: "يرجى التأكد من صحة البيانات قبل إرسالها إلى لجنة الدراسة المباشرة.",
-                sumNameLbl: "الاسم الكامل:",
-                sumEmailLbl: "البريد الإلكتروني:",
-                sumPhoneLbl: "رقم التواصل:",
-                sumCountryLbl: "بلد الإقامة:",
-                sumFilesLbl: "عدد المستندات والصور المرفقة:",
-                lblTerms: "أقوم بتقديم هذه البيانات بمحض إرادتي للحصول على الحماية والمنحة الألمانية، وأقرّ بصحة المعلومات الواردة أعلاه تحت مظلة حماية الخصوصية وقانون GDPR الأوروبي.",
-                btnPrevText: "السابق",
-                btnNextText: "التالي",
-                btnSubmitText: "إرسال الطلب بشكل آمن",
-                modalSuccessTitle: "تم تسليم طلبك بنجاح وبسرية فائقة!",
-                modalSuccessDesc: "تم تشفير واستلام بياناتك ومستنداتك بنجاح. سيقوم المستشار المسؤول بمراجعة الملف فوراً والتواصل معك عبر البريد الإلكتروني الآمن.",
-                lblRefCode: "رقم المرجعية والتتبع الخفي:",
-                btnCloseModal: "العودة للصفحة الرئيسية",
-                ftrCopy: "© 2026 AMAN Germany Protection Portal. جميع الحقوق محفوظة.",
-                ftrPanic: "زر الطوارئ السريع",
-                ftrPrivacy: "سياسة التشفير وحماية البيانات GDPR"
-            },
-            de: {
-                navSubtitle: "Deutsches Portal für Schutz- & Stipendienanträge",
-                quickExitText: "Schneller Exit",
-                badgeConfidential: "Ende-zu-Ende Verschlüsselung & Datenschutz",
-                heroTitle: "Programm für Humanitäre Schutzstipendien – Deutschland",
-                heroDesc: "Wir bieten einen sicheren, verschlüsselten Weg für direkte Schutz- und Hilfsanträge für Personen, die in ihrem Heimatland gefährdet sind. Alle Daten sind nach der DSGVO geschützt.",
-                badgeYear: "Offene Runde 2026",
-                stepLabel1: "Persönliche Daten",
-                stepLabel2: "Sicherheitsgründe",
-                stepLabel3: "Dokumente & Fotos",
-                stepLabel4: "Prüfung & Senden",
-                s1Heading: "Persönliche Informationen & Sichere Kontaktdaten",
-                s1Sub: "Bitte geben Sie genaue Daten für die Ausstellung von Schutzdokumenten an.",
-                lblFullName: "Vollständiger Name (laut Pass/Ausweis)",
-                lblEmail: "Sichere E-Mail-Adresse",
-                lblPhone: "Direkte Telefonnummer / WhatsApp",
-                lblNationality: "Aktuelle Staatsangehörigkeit",
-                lblCurrentCountry: "Derzeitiges Aufenthaltsland",
-                lblBirthDate: "Geburtsdatum",
-                s2Heading: "Humanitäre Gründe & Gefährdungslage",
-                s2Sub: "Bitte beschreiben Sie die Risiken, die Ihren Verbleib im Heimatland verhindern.",
-                lblThreatCategory: "Hauptgefahr Kategorie",
-                optPolitical: "Politische Verfolgung / Bedrohung",
-                optConflict: "Bewaffneter Konflikt / Unsicherheit",
-                optHR: "Menschenrechtsverletzungen",
-                optDiscrim: "Schwere Diskriminierung / Verfolgung",
-                optOther: "Sonstige Notfälle",
-                lblReasonDetail: "Ausführliche Erläuterung der Gefährdung",
-                btnAISummary: "KI-Formulierungshilfe",
-                lblSafetyNeeds: "Sofortige Sicherheitsbedürfnisse:",
-                chkRelocate: "Ich benötige schnelle Relokation in eine sichere Zone",
-                chkLegal: "Ich benötige zertifizierte deutsche Rechtsberatung",
-                s3Heading: "Fotos und Ausweisdokumente anfügen",
-                s3Sub: "Sie können Fotos Ihres Passes, Ausweises oder Nachweise hochladen (JPG, PNG, PDF).",
-                dropTitle: "Fotos hierher ziehen oder klicken zum Auswählen",
-                dropHint: "Unterstützt Bildformate (PNG, JPG, WEBP) bis zu 10 MB pro Datei",
-                btnSelectFiles: "Dateien & Fotos auswählen",
-                attachedTitle: "Angefügte Fotos & Dokumente:",
-                noFilesYet: "Noch keine Dateien oder Fotos angefügt",
-                aiVisionTitle: "Dokumentenprüfung & KI-Übersetzung (Gemini Vision)",
-                btnScanText: "Text scannen & analysieren",
-                s4Heading: "Antragsprüfung & M-Sign Digitale Unterschrift",
-                s4Sub: "Bitte überprüfen Sie die Daten vor der Übermittlung an die Kommission.",
-                sumNameLbl: "Vollständiger Name:",
-                sumEmailLbl: "E-Mail-Adresse:",
-                sumPhoneLbl: "Telefonnummer:",
-                sumCountryLbl: "Aufenthaltsland:",
-                sumFilesLbl: "Anzahl angefügter Dokumente/Fotos:",
-                lblTerms: "Ich reiche diese Daten freiwillig ein, um Schutz und ein Stipendium in Deutschland zu beantragen, gemäß DSGVO-Richtlinien.",
-                btnPrevText: "Zurück",
-                btnNextText: "Weiter",
-                btnSubmitText: "Sicher Einreichen",
-                modalSuccessTitle: "Antrag erfolgreich und vertraulich eingereicht!",
-                modalSuccessDesc: "Ihre Daten wurden verschlüsselt empfangen. Ein Berater wird sich in Kürze über Ihre sichere E-Mail melden.",
-                lblRefCode: "Referenznummer:",
-                btnCloseModal: "Zurück zur Hauptseite",
-                ftrCopy: "© 2026 AMAN Germany Protection Portal. Alle Rechte vorbehalten.",
-                ftrPanic: "Schnell-Exit-Button",
-                ftrPrivacy: "DSGVO Datenschutzrichtlinie"
-            },
-            en: {
-                navSubtitle: "German Protection & Scholarship Portal",
-                quickExitText: "Quick Exit",
-                badgeConfidential: "End-to-End Encrypted & GDPR Compliant",
-                heroTitle: "Humanitarian Protection Scholarship Program – Germany",
-                heroDesc: "Providing a secure and encrypted pathway to apply for direct asylum support and humanitarian grants for those facing danger or instability in their home countries.",
-                badgeYear: "2026 Active Call",
-                stepLabel1: "Personal Info",
-                stepLabel2: "Safety Reasons",
-                stepLabel3: "Documents & Photos",
-                stepLabel4: "Review & Submit",
-                s1Heading: "Personal Information & Secure Contacts",
-                s1Sub: "Please provide accurate details for communication and protection documentation.",
-                lblFullName: "Full Name (as in Passport/ID)",
-                lblEmail: "Secure Email Address",
-                lblPhone: "Direct Phone / WhatsApp",
-                lblNationality: "Current Nationality",
-                lblCurrentCountry: "Current Country of Residence",
-                lblBirthDate: "Date of Birth",
-                s2Heading: "Humanitarian Reasons & Safety Details",
-                s2Sub: "Describe the threats or circumstances preventing you from staying safe.",
-                lblThreatCategory: "Primary Threat Category",
-                optPolitical: "Political persecution / Threat",
-                optConflict: "Armed conflict / Regional instability",
-                optHR: "Human rights violation",
-                optDiscrim: "Severe discrimination / Persecution",
-                optOther: "Other urgent conditions",
-                lblReasonDetail: "Detailed Statement of Risk",
-                btnAISummary: "AI Formulating Assistant",
-                lblSafetyNeeds: "Immediate Safety Requirements:",
-                chkRelocate: "I need urgent relocation to a safe area",
-                chkLegal: "I require certified German legal counsel",
-                s3Heading: "Attach Photos & Document Proofs",
-                s3Sub: "Attach photos of passport, national ID, or official proof/threat evidence (JPG, PNG, PDF).",
-                dropTitle: "Drag & Drop photos or click to browse",
-                dropHint: "Supports image formats (PNG, JPG, WEBP) up to 10MB each",
-                btnSelectFiles: "Choose Files & Images",
-                attachedTitle: "Attached Photos & Documents:",
-                noFilesYet: "No files or photos attached yet",
-                aiVisionTitle: "Document Inspection & AI Translation (Gemini Vision)",
-                btnScanText: "Scan & Extract Text",
-                s4Heading: "Application Review & M-Sign",
-                s4Sub: "Please double check your information before submitting to the committee.",
-                sumNameLbl: "Full Name:",
-                sumEmailLbl: "Email Address:",
-                sumPhoneLbl: "Phone Number:",
-                sumCountryLbl: "Residence Country:",
-                sumFilesLbl: "Attached Documents / Photos:",
-                lblTerms: "I voluntarily submit these details to apply for German protection and grant under European GDPR regulations.",
-                btnPrevText: "Back",
-                btnNextText: "Next",
-                btnSubmitText: "Submit Securely",
-                modalSuccessTitle: "Application Submitted Successfully & Confidentially!",
-                modalSuccessDesc: "Your files and data have been encrypted and delivered. An advisor will contact you shortly via secure email.",
-                lblRefCode: "Reference Code:",
-                btnCloseModal: "Back to Home",
-                ftrCopy: "© 2026 AMAN Germany Protection Portal. All rights reserved.",
-                ftrPanic: "Quick Emergency Exit",
-                ftrPrivacy: "GDPR Data Encryption Policy"
-            }
-        };
+    <section id="faq-section" class="py-16 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span data-i18n="faq_badge" class="text-xs font-bold text-rose-600 uppercase tracking-wider bg-rose-50 border border-rose-200 px-3 py-1 rounded-full">معلومات وحقائق</span>
+          <h3 data-i18n="faq_heading" class="text-2xl sm:text-3xl font-black text-slate-900 mt-3">الأسئلة الشائعة حول اللجوء والجنسية</h3>
+        </div>
 
-        // --- Language Switching Engine ---
-        function toggleLangDropdown() {
-            const dropdown = document.getElementById('langDropdown');
-            dropdown.classList.toggle('hidden');
+        <div class="space-y-3">
+          
+          <!-- Item 1 -->
+          <div class="border border-slate-200 rounded-xl overflow-hidden">
+            <button onclick="toggleFaq(1)" class="w-full flex justify-between items-center p-4 bg-slate-50 hover:bg-slate-100 rtl:text-right ltr:text-left font-bold text-sm text-slate-800 transition">
+              <span data-i18n="faq_q1">هل يمكنني الحصول على الجواز الألماني وأنا متواجد خارج ألمانيا مباشرة؟</span>
+              <i id="faq-icon-1" class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i>
+            </button>
+            <div id="faq-answer-1" class="p-4 text-xs text-slate-600 leading-relaxed border-t border-slate-200 hidden bg-white">
+              <span data-i18n="faq_a1">قانونياً، لا يمكن لأي دولة منح جنسيتها وجواز سفرها لشخص يقيم في الخارج كلاجئ دون المرور بمرحلة الحماية الإنسانية وتأشيرة الدخول أولاً. التقديم عبر هذا النموذج هو لغرض <strong>فتح ملف حماية، وتوثيق الخطر، وربطك ببرامج القبول الإنساني (Relocation / Humanitarian Admission)</strong>، والتي تمنحك حق السفر الآمن والإقامة الرسمية التي تؤهلك للجنسية لاحقاً.</span>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="border border-slate-200 rounded-xl overflow-hidden">
+            <button onclick="toggleFaq(2)" class="w-full flex justify-between items-center p-4 bg-slate-50 hover:bg-slate-100 rtl:text-right ltr:text-left font-bold text-sm text-slate-800 transition">
+              <span data-i18n="faq_q2">أنا في خطر شديد، هل هناك تكاليف مالية لتقديم هذا الطلب؟</span>
+              <i id="faq-icon-2" class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i>
+            </button>
+            <div id="faq-answer-2" class="p-4 text-xs text-slate-600 leading-relaxed border-t border-slate-200 hidden bg-white">
+              <span data-i18n="faq_a2"><strong>كافة إجراءات طلبات اللجوء والحماية الإنسانية في ألمانيا والمفوضية السامية مجانية 100%.</strong> احذر تماماً من أي شخص أو مكتب يطلب مبالغ مالية مقابل وعود بالقبول أو السفر، فالقبول يخضع لمعايير إنسانية وأمنية وقانونية بحتة.</span>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="border border-slate-200 rounded-xl overflow-hidden">
+            <button onclick="toggleFaq(3)" class="w-full flex justify-between items-center p-4 bg-slate-50 hover:bg-slate-100 rtl:text-right ltr:text-left font-bold text-sm text-slate-800 transition">
+              <span data-i18n="faq_q3">ماذا أفعل إذا تم حظر أو مراقبة هاتفي في بلدي؟</span>
+              <i id="faq-icon-3" class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i>
+            </button>
+            <div id="faq-answer-3" class="p-4 text-xs text-slate-600 leading-relaxed border-t border-slate-200 hidden bg-white">
+              <span data-i18n="faq_a3">نوصي باستخدام وضع التصفح الخفي (Incognito Mode) واستخدام شبكة VPN موثوقة عند تقديم الطلب، ومسح سجل المتصفح بعد الانتهاء، أو استخدام زر "الخروج السريع" الموجود في أعلى الموقع والذي يوجهك مباشرة لمحرك بحث محايد بضغطة واحدة.</span>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="border border-slate-200 rounded-xl overflow-hidden">
+            <button onclick="toggleFaq(4)" class="w-full flex justify-between items-center p-4 bg-slate-50 hover:bg-slate-100 rtl:text-right ltr:text-left font-bold text-sm text-slate-800 transition">
+              <span data-i18n="faq_q4">ما هي الجهات الرسمية المسؤولة عن اللجوء في ألمانيا؟</span>
+              <i id="faq-icon-4" class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i>
+            </button>
+            <div id="faq-answer-4" class="p-4 text-xs text-slate-600 leading-relaxed border-t border-slate-200 hidden bg-white">
+              <span data-i18n="faq_a4">الجهة الرئيسية داخل ألمانيا هي <strong>المكتب الاتحادي للهجرة واللاجئين (BAMF)</strong>، وفي الخارج تعمل وزارة الخارجية الألمانية (Auswärtiges Amt) بالتعاون مع المفوضية السامية لشؤون اللاجئين (UNHCR) والمنظمات غير الحكومية الدولية مثل Pro Asyl.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 bg-slate-900 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-6 text-center rtl:md:text-right ltr:md:text-left">
+          
+          <div class="flex items-center gap-4 bg-slate-800/80 p-5 rounded-2xl border border-slate-700">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl flex-shrink-0">
+              <i class="fa-solid fa-phone-volume"></i>
+            </div>
+            <div>
+              <h5 data-i18n="contact_unhcr_title" class="text-sm font-bold text-white">مفوضية اللاجئين (UNHCR)</h5>
+              <p data-i18n="contact_unhcr_desc" class="text-xs text-slate-400 mt-0.5">خطوط الحماية المباشرة بمكاتب الشرق الأوسط وأوروبا</p>
+              <span class="text-xs text-amber-400 font-mono mt-1 block" dir="ltr">help.unhcr.org</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 bg-slate-800/80 p-5 rounded-2xl border border-slate-700">
+            <div class="w-12 h-12 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-xl flex-shrink-0">
+              <i class="fa-solid fa-scale-unbalanced-flip"></i>
+            </div>
+            <div>
+              <h5 data-i18n="contact_proasyl_title" class="text-sm font-bold text-white">منظمة Pro Asyl الألمانية</h5>
+              <p data-i18n="contact_proasyl_desc" class="text-xs text-slate-400 mt-0.5">استشارات قانونية مجانية للاجئين والمعرضين للخطر</p>
+              <span class="text-xs text-sky-400 font-mono mt-1 block" dir="ltr">proasyl.de</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 bg-slate-800/80 p-5 rounded-2xl border border-slate-700">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl flex-shrink-0">
+              <i class="fa-solid fa-envelope-shield"></i>
+            </div>
+            <div>
+              <h5 data-i18n="contact_safe_title" class="text-sm font-bold text-white">بريد الاستغاثة الآمن</h5>
+              <p data-i18n="contact_safe_desc" class="text-xs text-slate-400 mt-0.5">تلقي حالات التهديد العاجل والنشطاء الحقوقيين</p>
+              <span class="text-xs text-emerald-400 font-mono mt-1 block" dir="ltr">intake-protection@germany-humanitarian.eu</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-slate-950 text-slate-400 text-xs py-10 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center rtl:md:text-right ltr:md:text-left">
+        <div class="flex items-center gap-3">
+          <div class="w-7 h-7 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-sm">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <span data-i18n="footer_title" class="text-white font-bold text-sm">بوابة إعانة وتسجيل طالبي الحماية - ألمانيا</span>
+        </div>
+        <p data-i18n="footer_desc" class="text-slate-500 text-xs max-w-xl">
+          صُممت هذه المنصة كمبادرة إرشادية وتسهيلية لمساعدة المتضررين من النزاعات في تنظيم ملفاتهم والتواصل مع القنوات الرسمية المعنية.
+        </p>
+      </div>
+
+      <div class="pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row justify-between items-center gap-3 text-slate-500">
+        <div data-i18n="footer_rights">© 2026 دليل الحماية القانونية وإعادة التوطين. جميع الحقوق محفوظة لسلامة الأفراد.</div>
+        <div class="flex items-center gap-4">
+          <button onclick="emergencyExit()" data-i18n="footer_exit" class="hover:text-amber-400 transition">مسح الآثار ومغادرة الموقع</button>
+          <span>•</span>
+          <a href="#wizard-section" data-i18n="footer_apply" class="hover:text-amber-400 transition">تقديم طلب</a>
+          <span>•</span>
+          <a href="#tracking-section" data-i18n="footer_track" class="hover:text-amber-400 transition">تتبع الملف</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl text-center relative overflow-hidden animate-in fade-in zoom-in duration-200">
+      
+      <!-- Top German Ribbon -->
+      <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-black via-rose-600 to-amber-400"></div>
+
+      <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-sm">
+        <i class="fa-solid fa-check-double"></i>
+      </div>
+
+      <h3 data-i18n="modal_success_title" class="text-xl sm:text-2xl font-black text-slate-900">تم تسجيل وتشفير ملف طلبك بنجاح</h3>
+      <p data-i18n="modal_success_desc" class="text-slate-600 text-xs sm:text-sm mt-2">
+        تم تخصيص رمز مرجعي خاص بملفك الإنساني. يرجى حفظ هذا الرمز في مكان سري وآمن تماماً لاستخدامه في متابعة ملفك والتواصل مع الجهات الراعية.
+      </p>
+
+      <!-- Reference Code Display -->
+      <div class="my-6 p-4 rounded-2xl bg-slate-100 border border-slate-300">
+        <span data-i18n="modal_ref_label" class="text-xs text-slate-500 block mb-1">الرقم المرجعي لطلب الحماية:</span>
+        <div id="modalRefCode" class="text-xl sm:text-2xl font-mono font-black text-slate-900 tracking-wider select-all" dir="ltr">
+          DE-HUM-2026-XXXXX
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 text-xs font-bold">
+        <button onclick="copyReferenceCode()" class="bg-slate-800 hover:bg-slate-700 text-white py-3 rounded-xl transition flex items-center justify-center gap-2">
+          <i class="fa-solid fa-copy"></i>
+          <span id="copyBtnText" data-i18n="modal_copy_btn">نسخ الكود</span>
+        </button>
+        <button onclick="printSummaryReceipt()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 py-3 rounded-xl transition flex items-center justify-center gap-2">
+          <i class="fa-solid fa-print"></i>
+          <span data-i18n="modal_print_btn">طباعة إشعار التسجيل</span>
+        </button>
+      </div>
+
+      <button onclick="closeSuccessModal()" data-i18n="modal_close_btn" class="w-full mt-3 text-slate-500 hover:text-slate-800 text-xs py-2 transition font-medium">
+        إغلاق والانتقال إلى أداة التتبع
+      </button>
+    </div>
+  </div>
+
+  <!-- Custom Alert Notification Toast -->
+  <div id="toastNotification" class="fixed bottom-5 left-5 z-50 bg-slate-900 text-white text-xs px-4 py-3 rounded-xl shadow-lg border border-slate-700 flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300">
+    <i id="toastIcon" class="fa-solid fa-circle-info text-amber-400 text-base"></i>
+    <span id="toastMessage">رسالة التنبيه</span>
+  </div>
+
+  <script>
+    let currentLang = 'ar';
+    let currentStep = 1;
+    const totalSteps = 4;
+    let uploadedFiles = [];
+    let generatedReference = '';
+
+    const i18n = {
+      ar: {
+        safety_bar: "لحمايتك وسلامتك: إذا كنت بمكان غير آمن، يمكنك مغادرة الصفحة فوراً بضغطة زر.",
+        quick_exit: "خروج سريع وآمن (Google)",
+        portal_sub: "بوابة الدعم الإنساني والقانوني",
+        portal_title: "برنامج الحماية وإعادة التوطين بألمانيا",
+        nav_apply: "تقديم طلب جديد",
+        nav_track: "متابعة حالة طلب",
+        nav_legal: "المسارات القانونية",
+        nav_faq: "الأسئلة الشائعة",
+        cta_start_btn: "بدء تقديم الطلب",
+        cta_start_short: "تقديم",
+        hero_badge: "بوابة مساعدة للأشخاص المعرضين للخطر والاضطهاد والحروب",
+        hero_title_1: "أمانك وحياتك أولوية إنسانية.",
+        hero_title_2: "طريقك لطلب الحماية واللجوء الإنساني في ألمانيا.",
+        hero_description: "تتيح هذه المنصة لجميع الفئات التي تعاني من انعدام الأمان في بلدانها (بسبب النزاعات، الاضطهاد السياسي، حرية الرأي، التهديد الأمني) تسجيل وتقييم بياناتهم، وتجهيز ملف اللجوء وإعادة التوطين بالتعاون مع المنظمات المعتمدة ووفق اتفاقية جنيف للاجئين والقانون الألماني (AufenthG).",
+        legal_notice_tag: "تنويه قانوني هام:",
+        legal_notice_body: "الجنسية الألمانية لا تُمنح بشكل فوري ومباشر من الخارج، بل يتم التقديم أولاً على حماية إنسانية / لجوء أو قبول إنساني (Aufnahmeprogramm)، والتي تمنحك إقامة قانونية آمنة في ألمانيا تؤهلك لاحقاً للحصول على الجنسية بعد الاستقرار واستيفاء الشروط القانونية.",
+        hero_start_btn: "بدء ملء استمارة الحماية",
+        hero_track_btn: "متابعة طلب سابق برقم التتبع",
+        feat_1_title: "تشفير وسرية تامة",
+        feat_1_desc: "البيانات محمية ولا تُشارك مع سلطات بلدك الأصلي نهائياً.",
+        feat_2_title: "دعم الفئات الأكثر ضعفاً",
+        feat_2_desc: "أولوية للأشخاص المهددة حياتهم، النساء، والأطفال، والناشطين.",
+        feat_3_title: "مسار التجنيس المستقبلي",
+        feat_3_desc: "الحصول على الإقامة يقود للجنسية الألمانية بعد 3 إلى 5 سنوات.",
+        wizard_badge: "استمارة الحماية الإنسانية",
+        wizard_heading: "تقديم ملف طلب الحماية والأمان",
+        wizard_subtext: "يرجى ملء المعلومات بدقة. يمكنك تقديم الطلب باسم مستعار أو حجب بعض البيانات إن كنت تخشى مراقبة هاتفك.",
+        step_1_tab: "البيانات الأساسية",
+        step_2_tab: "تقييم الخطر",
+        step_3_tab: "الارتباط بألمانيا",
+        step_4_tab: "المراجعة والإرسال",
+        step_1_title: "الخطوة 1: المعلومات الشخصية وموقع التواجد الحالي",
+        step_1_subtitle: "تستخدم هذه المعلومات للتواصل الآمن وتحديد حالتك القانونية.",
+        label_full_name: "الاسم الكامل (أو الاسم المستعار للسلامة)",
+        placeholder_name: "مثال: أحمد عبد الله",
+        label_nationality: "الجنسية الحالية / بلد المنشأ",
+        label_dob: "تاريخ الميلاد",
+        label_current_location: "أين تتواجد حالياً؟",
+        label_email: "وسيلة تواصل مشفرة (بريد إلكتروني أو سيجنال)",
+        label_phone: "رقم الهاتف (مع فتح الخط الدولي ويفضل واتساب/تيليغرام)",
+        anon_tip: "هل تحتاج لإخفاء هويتك تماماً في المرحلة الأولى؟ سنزودك برمز مشفر دون الحاجة لتسجيل اسمك الحقيقي في السجلات العامة.",
+        step_2_title: "الخطوة 2: تقييم أسباب عدم الأمان والتهديدات",
+        step_2_subtitle: "تساعد هذه البيانات الفرق القانونية في تحديد أولوية الحماية العاجلة والتصنيف الإنساني.",
+        label_threat_reasons: "ما هو السبب الرئيسي لشعورك بانعدام الأمان؟ (يمكن تحديد أكثر من خيار)",
+        threat_war_title: "حروب ونزاعات مسلحة",
+        threat_war_desc: "قصف، دمار للبنية التحتية، انعدام الأمن العام للجميع.",
+        threat_politics_title: "ملاحقة سياسية أو حرية رأي",
+        threat_politics_desc: "معارضة، صحافة، نشاط مجتمعي أو حقوقي مهدد بالاعتقال.",
+        threat_discrim_title: "اضطهاد عقائدي، ديني، أو عرقي",
+        threat_discrim_desc: "الاستهداف بسبب الانتماء لأقلية معينة أو معتقد.",
+        threat_gender_title: "تهديدات مباشرة أو عنف أسري/عشائري",
+        threat_gender_desc: "تهديدات بالقتل، ثأر، أو عنف موجه ضد النساء والأطفال.",
+        label_threat_desc: "صف باختصار وضعك الأمني والتهديدات التي تواجهها",
+        placeholder_threat: "اشرح ما حدث معك ولماذا يستحيل عليك البقاء في منطقتك الحالية وما التهديد المباشر لحياتك أو حريتك...",
+        label_unhcr: "هل أنت مسجل رسمياً لدى المفوضية السامية للأمم المتحدة (UNHCR)؟",
+        label_family_num: "هل يرافقك أفراد من العائلة (أطفال، زوج/ة، والدين)؟",
+        step_3_title: "الخطوة 3: الروابط بألمانيا، المهارات والمستندات",
+        step_3_subtitle: "وجود أقارب، دراسة سابقة، أو لغة يدعم إمكانية الاندماج وتسريع دراسة الملف وفق برامج القبول الإنساني الاتحادية.",
+        label_relatives: "هل لديك أقارب من الدرجة الأولى أو الثانية بألمانيا؟",
+        label_german_lang: "مستوى إتقان اللغة الألمانية (إن وجد)",
+        label_education: "المؤهل الأكاديمي أو المهني",
+        label_id_status: "وثائق الهوية المتوفرة لديك حالياً",
+        upload_title: "إرفاق إثباتات التهديد أو الوثائق الشخصية (اختياري)",
+        upload_desc: "يمكنك رفع صور أو مستندات (بلاغات، تهديدات، إثبات إقامة، جواز السفر) بصيغ PDF أو JPG أو PNG.",
+        upload_btn: "تحديد الملفات",
+        step_4_title: "الخطوة 4: مراجعة البيانات والإقرار الأمني",
+        step_4_subtitle: "راجع البيانات المدخلة قبل الإرسال المشفر وتوليد ملف الطلب.",
+        rev_lbl_name: "مقدم الطلب:",
+        rev_lbl_nat: "الجنسية:",
+        rev_lbl_loc: "المكان الحالي:",
+        rev_lbl_contact: "وسيلة التواصل:",
+        rev_lbl_threats: "أسباب التهديد المختارة:",
+        rev_lbl_family: "أفراد العائلة المرافقين:",
+        consent_1: "أقر بأن جميع البيانات والوقائع المذكورة في هذه الاستمارة صحيحة وتعبر عن التهديد الفعلي الذي أتعرض له.",
+        consent_2: "أوافق على مراجعة ملفي وتمريره للجهات الحقوقية والإنسانية المعنية ببرامج إعادة التوطين وفق بروتوكولات الحماية المشفرة.",
+        consent_3: "أدرك أن الجنسية الألمانية تتطلب استكمال مسار الحماية القانونية والإقامة في ألمانيا والاندماج ولا تُمنح كوثيقة سفر مباشرة.",
+        btn_prev: "السابق",
+        btn_next: "التالي",
+        btn_submit: "إرسال الطلب واعتماد الملف",
+        track_badge: "الاستعلام المباشر",
+        track_heading: "متابعة حالة طلب حماية سابق",
+        track_subtext: "أدخل الرقم المرجعي لطلبك (مثال: DE-HUM-84920) للاطلاع على المستجدات ومرحلة دراسة الملف.",
+        track_placeholder: "أدخل رقم الطلب المرجعي (e.g., DE-HUM-2026-X)",
+        track_query_btn: "استعلام فوري",
+        track_demo_tip: "يمكنك تجربة الكود التجريبي:",
+        track_or: "أو",
+        legal_section_badge: "دليل الاستقرار والحماية",
+        legal_section_heading: "المسارات الرسمية للحماية والجنسية بألمانيا",
+        legal_section_subtext: "فهمك الدقيق للقانون يحميك من سماسرة الهجرة والوعود الكاذبة. إليك المسارات الفعلية المعمول بها:",
+        path_1_title: "1. اللجوء الإنساني واتفاقية جنيف (Asyl)",
+        path_1_desc: "مخصص للأفراد الذين يواجهون اضطهاداً مباشراً وشخصياً في بلدانهم بسبب الدين أو الجنسية أو الانتماء السياسي. يمنح حامله حق الإقامة لمدة 3 سنوات قابلة للتجديد مع لم الشمل.",
+        path_1_note: "المسار للجنسية: بعد 3 إلى 5 سنوات من الإقامة القانونية والاندماج.",
+        path_2_title: "2. الحماية الفرعية (Subsidiärer Schutz)",
+        path_2_desc: "تُمنح للأشخاص الفارين من الحروب العامة والنزاعات العسكرية دون الحاجة لإثبات استهداف شخصي مباشر. تمنح إقامة لمدة عام تجدد دورياً مع حق العمل والتعليم.",
+        path_2_note: "المسار للجنسية: مؤهلة للتجنيس بعد استيفاء شروط سبل العيش واللغة.",
+        path_3_title: "3. برامج القبول الإنساني (Aufnahmeprogramme)",
+        path_3_desc: "برامج تطلقها الحكومة الاتحادية الألمانية (مثل برنامج أفغانستان أو الكفالات الخاصة للولايات §22/23 AufenthG) لنقل فئات محددة بأمان وسفر رسمي إلى ألمانيا.",
+        path_3_note: "المسار للجنسية: إقامة سريعة تتيح التقدم للجنسية وفق القانون الحديث.",
+        reform_tag: "تحديث قانون الجنسية الألماني الحديث (StARModG)",
+        reform_title: "تقليص مدة الحصول على الجنسية الألمانية إلى 5 سنوات (و3 سنوات للمتميزين)",
+        reform_desc: "أصبح القانون الألماني الجديد يسمح بازدواج الجنسية، واختصار سنوات الانتظار للاجئين والمقيمين النظاميين بمجرد تحقيق مستوى لغة B1 والاستقلال المادي.",
+        reform_btn: "تقديم ملفك الآن",
+        faq_badge: "معلومات وحقائق",
+        faq_heading: "الأسئلة الشائعة حول اللجوء والجنسية",
+        faq_q1: "هل يمكنني الحصول على الجواز الألماني وأنا متواجد خارج ألمانيا مباشرة؟",
+        faq_a1: "قانونياً، لا يمكن لأي دولة منح جنسيتها وجواز سفرها لشخص يقيم في الخارج كلاجئ دون المرور بمرحلة الحماية الإنسانية وتأشيرة الدخول أولاً. التقديم عبر هذا النموذج هو لغرض <strong>فتح ملف حماية، وتوثيق الخطر، وربطك ببرامج القبول الإنساني (Relocation / Humanitarian Admission)</strong>، والتي تمنحك حق السفر الآمن والإقامة الرسمية التي تؤهلك للجنسية لاحقاً.",
+        faq_q2: "أنا في خطر شديد، هل هناك تكاليف مالية لتقديم هذا الطلب؟",
+        faq_a2: "<strong>كافة إجراءات طلبات اللجوء والحماية الإنسانية في ألمانيا والمفوضية السامية مجانية 100%.</strong> احذر تماماً من أي شخص أو مكتب يطلب مبالغ مالية مقابل وعود بالقبول أو السفر، فالقبول يخضع لمعايير إنسانية وأمنية وقانونية بحتة.",
+        faq_q3: "ماذا أفعل إذا تم حظر أو مراقبة هاتفي في بلدي؟",
+        faq_a3: "نوصي باستخدام وضع التصفح الخفي (Incognito Mode) واستخدام شبكة VPN موثوقة عند تقديم الطلب، ومسح سجل المتصفح بعد الانتهاء، أو استخدام زر \"الخروج السريع\" الموجود في أعلى الموقع والذي يوجهك مباشرة لمحرك بحث محايد بضغطة واحدة.",
+        faq_q4: "ما هي الجهات الرسمية المسؤولة عن اللجوء في ألمانيا؟",
+        faq_a4: "الجهة الرئيسية داخل ألمانيا هي <strong>المكتب الاتحادي للهجرة واللاجئين (BAMF)</strong>، وفي الخارج تعمل وزارة الخارجية الألمانية (Auswärtiges Amt) بالتعاون مع المفوضية السامية لشؤون اللاجئين (UNHCR) والمنظمات غير الحكومية الدولية مثل Pro Asyl.",
+        contact_unhcr_title: "مفوضية اللاجئين (UNHCR)",
+        contact_unhcr_desc: "خطوط الحماية المباشرة بمكاتب الشرق الأوسط وأوروبا",
+        contact_proasyl_title: "منظمة Pro Asyl الألمانية",
+        contact_proasyl_desc: "استشارات قانونية مجانية للاجئين والمعرضين للخطر",
+        contact_safe_title: "بريد الاستغاثة الآمن",
+        contact_safe_desc: "تلقي حالات التهديد العاجل والنشطاء الحقوقيين",
+        footer_title: "بوابة إعانة وتسجيل طالبي الحماية - ألمانيا",
+        footer_desc: "صُممت هذه المنصة كمبادرة إرشادية وتسهيلية لمساعدة المتضررين من النزاعات في تنظيم ملفاتهم والتواصل مع القنوات الرسمية المعنية.",
+        footer_rights: "© 2026 دليل الحماية القانونية وإعادة التوطين. جميع الحقوق محفوظة لسلامة الأفراد.",
+        footer_exit: "مسح الآثار ومغادرة الموقع",
+        footer_apply: "تقديم طلب",
+        footer_track: "تتبع الملف",
+        modal_success_title: "تم تسجيل وتشفير ملف طلبك بنجاح",
+        modal_success_desc: "تم تخصيص رمز مرجعي خاص بملفك الإنساني. يرجى حفظ هذا الرمز في مكان سري وآمن تماماً لاستخدامه في متابعة ملفك والتواصل مع الجهات الراعية.",
+        modal_ref_label: "الرقم المرجعي لطلب الحماية:",
+        modal_copy_btn: "نسخ الكود",
+        modal_print_btn: "طباعة إشعار التسجيل",
+        modal_close_btn: "إغلاق والانتقال إلى أداة التتبع"
+      },
+      de: {
+        safety_bar: "Zu Ihrer Sicherheit: Falls Sie sich in Gefahr befinden, können Sie die Seite sofort per Klick verlassen.",
+        quick_exit: "Schnellverlassen (Google)",
+        portal_sub: "Portal für humanitäre & rechtliche Unterstützung",
+        portal_title: "Schutz- & Resettlement-Programm Deutschland",
+        nav_apply: "Neuen Antrag stellen",
+        nav_track: "Status überprüfen",
+        nav_legal: "Rechtliche Wege",
+        nav_faq: "Häufige Fragen (FAQ)",
+        cta_start_btn: "Antrag starten",
+        cta_start_short: "Starten",
+        hero_badge: "Hilfsportal für Menschen in Not, Verfolgung & Konflikten",
+        hero_title_1: "Ihre Sicherheit und Ihr Leben haben Priorität.",
+        hero_title_2: "Ihr Weg zu humanitärem Schutz & Asyl in Deutschland.",
+        hero_description: "Diese geschützte Plattform ermöglicht bedrohten Personen (aufgrund von Kriegen, politischer Verfolgung, Repressalien oder akuter Gefährdung) die strukturierte Registrierung ihrer Falldaten zur Weiterleitung an anerkannte Hilfsorganisationen nach der Genfer Flüchtlingskonvention und dem deutschen Aufenthaltsgesetz (AufenthG).",
+        legal_notice_tag: "Wichtiger rechtlicher Hinweis:",
+        legal_notice_body: "Die deutsche Staatsangehörigkeit wird nicht direkt im Ausland erteilt. Zuerst erfolgt der Antrag auf humanitären Schutz / Asyl oder ein Aufnahmeprogramm (§ 22/23 AufenthG). Dies führt zu einem regulären Aufenthaltstitel in Deutschland, der nach gelungener Integration zur Einbürgerung berechtigt.",
+        hero_start_btn: "Schutzformular jetzt ausfüllen",
+        hero_track_btn: "Bestehenden Antrag mit Aktenzeichen prüfen",
+        feat_1_title: "Volle Verschlüsselung",
+        feat_1_desc: "Ihre Daten sind geschützt und werden keinesfalls mit Behörden Ihres Herkunftslandes geteilt.",
+        feat_2_title: "Schutz vulnerabler Gruppen",
+        feat_2_desc: "Priorität für akut gefährdete Personen, Frauen, Kinder und Menschenrechtsaktivisten.",
+        feat_3_title: "Perspektive Einbürgerung",
+        feat_3_desc: "Der rechtmäßige Aufenthaltstitel ermöglicht die Einbürgerung nach 3 bis 5 Jahren.",
+        wizard_badge: "Humanitärer Schutzantrag",
+        wizard_heading: "Einreichung Ihres Schutzgesuchs",
+        wizard_subtext: "Bitte füllen Sie die Angaben sorgfältig aus. Sie können zum Selbstschutz ein Pseudonym verwenden.",
+        step_1_tab: "Persönliche Daten",
+        step_2_tab: "Gefährdungsgrad",
+        step_3_tab: "Bezug zu Deutschland",
+        step_4_tab: "Prüfung & Absenden",
+        step_1_title: "Schritt 1: Persönliche Angaben & Aktueller Aufenthaltsort",
+        step_1_subtitle: "Diese Daten dienen der sicheren Kontaktaufnahme und der rechtlichen Ersteinschätzung.",
+        label_full_name: "Vollständiger Name (oder Deckname zum Selbstschutz)",
+        placeholder_name: "Z.B. Ahmed Abdullah",
+        label_nationality: "Derzeitige Staatsangehörigkeit / Herkunft",
+        label_dob: "Geburtsdatum",
+        label_current_location: "Wo halten Sie sich derzeit auf?",
+        label_email: "Verschlüsselter Kontakt (E-Mail oder Signal)",
+        label_phone: "Telefonnummer (mit internationaler Vorwahl)",
+        anon_tip: "Müssen Sie Ihre Identität vorerst geheim halten? Sie erhalten ein anonymes Aktenzeichen ohne öffentliche Listung.",
+        step_2_title: "Schritt 2: Einschätzung der Gefährdungsgründe",
+        step_2_subtitle: "Diese Angaben helfen den Fachkräften bei der humanitären Priorisierung.",
+        label_threat_reasons: "Hauptgründe für die akute Unsicherheit (Mehrfachauswahl möglich)",
+        threat_war_title: "Krieg & bewaffnete Konflikte",
+        threat_war_desc: "Bombardierungen, Zerstörung der Lebensgrundlage, allgemeine Gewalt.",
+        threat_politics_title: "Politische Verfolgung & Meinungsfreiheit",
+        threat_politics_desc: "Opposition, Journalismus, zivilgesellschaftliche Arbeit, Verhaftungsgefahr.",
+        threat_discrim_title: "Religiöse, ethnische oder gesellschaftliche Diskriminierung",
+        threat_discrim_desc: "Gezielte Repression aufgrund von Herkunft, Glauben oder Minderheitszugehörigkeit.",
+        threat_gender_title: "Geschlechtsspezifische Gewalt / Direkte Todesdrohungen",
+        threat_gender_desc: "Blutrache, Clan-Gewalt, Bedrohungen gegen Frauen und Minderjährige.",
+        label_threat_desc: "Kurze Schilderung Ihrer Sicherheitslage und Bedrohungen",
+        placeholder_threat: "Beschreiben Sie, was passiert ist und warum ein Verbleib am jetzigen Ort lebensgefährlich ist...",
+        label_unhcr: "Sind Sie bereits beim UNHCR registriert?",
+        label_family_num: "Begleitende Familienangehörige (Kinder, Ehepartner, Eltern)",
+        step_3_title: "Schritt 3: Verbindungen nach Deutschland, Qualifikationen & Dokumente",
+        step_3_subtitle: "Vorhandene Sprachkenntnisse, Verwandte oder Abschlüsse begünstigen die Aufnahmeverfahren.",
+        label_relatives: "Verwandte 1. oder 2. Grades in Deutschland?",
+        label_german_lang: "Kenntnisse der deutschen Sprache",
+        label_education: "Höchster Bildungs- bzw. Berufsabschluss",
+        label_id_status: "Aktuell vorhandene Ausweisdokumente",
+        upload_title: "Nachweise der Gefährdung oder Identitätsdokumente (optional)",
+        upload_desc: "Sie können Dokumente (Bedrohungsnachrichten, Berichte, Pässe) als PDF, JPG oder PNG hochladen.",
+        upload_btn: "Dateien auswählen",
+        step_4_title: "Schritt 4: Fallübersicht & Sicherheitseinwilligung",
+        step_4_subtitle: "Überprüfen Sie Ihre Daten vor der verschlüsselten Übermittlung.",
+        rev_lbl_name: "Antragsteller:",
+        rev_lbl_nat: "Staatsangehörigkeit:",
+        rev_lbl_loc: "Aufenthaltsort:",
+        rev_lbl_contact: "Kontakt:",
+        rev_lbl_threats: "Ausgewählte Gefährdungen:",
+        rev_lbl_family: "Begleitpersonen:",
+        consent_1: "Ich versichere, dass die gemachten Angaben wahrheitsgemäß sind und meiner tatsächlichen Gefährdungslage entsprechen.",
+        consent_2: "Ich willige in die vertrauliche Prüfung meines Gesuchs durch autorisierte Hilfsorganisationen ein.",
+        consent_3: "Mir ist bekannt, dass die Einbürgerung erst nach einem rechtmäßigen Aufenthalt in Deutschland erfolgen kann.",
+        btn_prev: "Zurück",
+        btn_next: "Weiter",
+        btn_submit: "Schutzgesuch verschlüsselt einreichen",
+        track_badge: "Direkte Statusabfrage",
+        track_heading: "Status eines bestehenden Schutzgesuchs prüfen",
+        track_subtext: "Geben Sie Ihr persönliches Aktenzeichen ein (z.B. DE-HUM-84920), um den Verfahrensstand einzusehen.",
+        track_placeholder: "Aktenzeichen eingeben (z.B. DE-HUM-2026-X)",
+        track_query_btn: "Status abfragen",
+        track_demo_tip: "Demofall testen:",
+        track_or: "oder",
+        legal_section_badge: "Rechtlicher Leitfaden",
+        legal_section_heading: "Offizielle Wege zu Schutz und Staatsangehörigkeit",
+        legal_section_subtext: "Rechtssicherheit schützt vor Falschinformationen und Ausbeutung. Folgende Schutzformen existieren:",
+        path_1_title: "1. Asyl & Genfer Flüchtlingskonvention",
+        path_1_desc: "Für individuell politisch, religiös oder rassistisch Verfolgte. Gewährt eine Aufenthaltserlaubnis für 3 Jahre mit Recht auf Familiennachzug.",
+        path_1_note: "Weg zur Einbürgerung: Nach 3 bis 5 Jahren rechtmäßigem Aufenthalt bei Erfüllung der Integrationskriterien.",
+        path_2_title: "2. Subsidiärer Schutz (§ 4 AsylG)",
+        path_2_desc: "Für Menschen, die vor bewaffneten Konflikten oder Folter fliehen, ohne individuell verfolgt zu sein. Erlaubnis für 1 Jahr mit Verlängerungsmöglichkeit.",
+        path_2_note: "Weg zur Einbürgerung: Berechtigt zur späteren Einbürgerung bei gesichertem Lebensunterhalt.",
+        path_3_title: "3. Humanitäre Aufnahmeprogramme (§ 22/23 AufenthG)",
+        path_3_desc: "Sonderprogramme des Bundes oder der Bundesländer für besonders gefährdete Gruppen zur direkten, sicheren Einreise nach Deutschland.",
+        path_3_note: "Weg zur Einbürgerung: Direkter Aufenthaltsstatus mit klarer Einbürgerungsperspektive nach neuem Recht.",
+        reform_tag: "Neues deutsches Staatsangehörigkeitsrecht (StARModG)",
+        reform_title: "Verkürzung der Einbürgerungsfrist auf 5 Jahre (bei besonderen Leistungen auf 3 Jahre)",
+        reform_desc: "Das modernisierte Gesetz erlaubt die Beibehaltung der bisherigen Staatsangehörigkeit (Doppelpass) und ermöglicht eine Einbürgerung bereits nach 5 Jahren.",
+        reform_btn: "Jetzt Antrag vorbereiten",
+        faq_badge: "Fakten & Auskunft",
+        faq_heading: "Häufige Fragen zu Schutz & Staatsangehörigkeit",
+        faq_q1: "Kann ich den deutschen Pass direkt im Ausland erhalten?",
+        faq_a1: "Rechtlich ist eine Verleihung der deutschen Staatsangehörigkeit direkt im Ausland an Schutzsuchende nicht möglich. Dieser Antrag dient der <strong>Einleitung von Schutz- und Resettlement-Verfahren</strong>, die ein legales Visum und einen Aufenthaltstitel begründen, welcher später zur Einbürgerung führt.",
+        faq_q2: "Gibt es finanzielle Gebühren für diesen Schutzantrag?",
+        faq_a2: "<strong>Alle Anträge auf humanitären Schutz und Asylverfahren in Deutschland sowie beim UNHCR sind 100% kostenfrei.</strong> Zahlen Sie niemals Geld an angebliche Vermittler oder Agenturen.",
+        faq_q3: "Was kann ich tun, wenn mein Endgerät überwacht wird?",
+        faq_a3: "Nutzen Sie den privaten Modus Ihres Browsers, aktivieren Sie ein VPN und nutzen Sie bei Gefahr den Button \"Schnellverlassen\", der Sie sofort zu einer neutralen Suchmaschine weiterleitet.",
+        faq_q4: "Welche Behörden sind in Deutschland zuständig?",
+        faq_a4: "Hauptzuständig ist das <strong>Bundesamt für Migration und Flüchtlinge (BAMF)</strong>, im Ausland das Auswärtige Amt in Zusammenarbeit mit dem UNHCR und Nichtregierungsorganisationen wie Pro Asyl.",
+        contact_unhcr_title: "UN-Flüchtlingskommissariat (UNHCR)",
+        contact_unhcr_desc: "Direkte Hotlines in den Krisenregionen und Europa",
+        contact_proasyl_title: "Pro Asyl Deutschland",
+        contact_proasyl_desc: "Unabhängige Beratung für Schutzsuchende",
+        contact_safe_title: "Sichere Notfall-Mail",
+        contact_safe_desc: "Für akute Gefährdungsfälle und Menschenrechtsverteidiger",
+        footer_title: "Portal für Schutzsuchende - Deutschland",
+        footer_desc: "Diese Plattform dient der Orientierung und sicheren Registrierung von Schutzgesuchen nach deutschem und internationalem Recht.",
+        footer_rights: "© 2026 Leitfaden für Schutz & Resettlement. Alle Rechte dem Personenschutz vorbehalten.",
+        footer_exit: "Spuren löschen & Beenden",
+        footer_apply: "Antrag stellen",
+        footer_track: "Status prüfen",
+        modal_success_title: "Ihr Schutzgesuch wurde erfolgreich verschlüsselt",
+        modal_success_desc: "Ihrem Fall wurde ein offizielles Aktenzeichen zugewiesen. Bitte notieren und sichern Sie dieses Zeichen an einem geschützten Ort.",
+        modal_ref_label: "Ihr persönliches Aktenzeichen:",
+        modal_copy_btn: "Kopieren",
+        modal_print_btn: "Bestätigung drucken",
+        modal_close_btn: "Schließen und zur Statusabfrage"
+      }
+    };
+
+    const dropdownOptions = {
+      applicantNationality: {
+        ar: [
+          { val: "", text: "اختر جنسيتك..." },
+          { val: "سوري", text: "سوريا" },
+          { val: "فلسطيني", text: "فلسطين" },
+          { val: "يمني", text: "اليمن" },
+          { val: "سوداني", text: "السودان" },
+          { val: "عراقي", text: "العراق" },
+          { val: "أفغاني", text: "أفغانستان" },
+          { val: "لبناني", text: "لبنان" },
+          { val: "ليبي", text: "ليبيا" },
+          { val: "أوكراني", text: "أوكرانيا" },
+          { val: "أخرى", text: "دولة أخرى" }
+        ],
+        de: [
+          { val: "", text: "Staatsangehörigkeit wählen..." },
+          { val: "Syrisch", text: "Syrien" },
+          { val: "Palästinensisch", text: "Palästina" },
+          { val: "Jemenitisch", text: "Jemen" },
+          { val: "Sudanesisch", text: "Sudan" },
+          { val: "Irakisch", text: "Irak" },
+          { val: "Afghanisch", text: "Afghanistan" },
+          { val: "Libanesisch", text: "Libanon" },
+          { val: "Libysch", text: "Libyen" },
+          { val: "Ukrainisch", text: "Ukraine" },
+          { val: "Andere", text: "Anderes Land" }
+        ]
+      },
+      applicantCurrentLocation: {
+        ar: [
+          { val: "", text: "حدد مكان وجودك الآن..." },
+          { val: "داخل بلدي الأصلي (خطر مباشر)", text: "داخل بلدي الأصلي (مهدد بالخطر)" },
+          { val: "في دولة مجاورة / دولة عبور", text: "في دولة عبور / لجوء مؤقتة" },
+          { val: "في تركيا", text: "في تركيا" },
+          { val: "في مصر", text: "في مصر" },
+          { val: "في الأردن / لبنان", text: "في الأردن أو لبنان" },
+          { val: "داخل الاتحاد الأوروبي", text: "داخل إحدى دول الاتحاد الأوروبي" },
+          { val: "أخرى", text: "مكان آخر" }
+        ],
+        de: [
+          { val: "", text: "Derzeitigen Aufenthaltsort wählen..." },
+          { val: "Im Herkunftsland (akute Bedrohung)", text: "Im Herkunftsland (akut gefährdet)" },
+          { val: "In einem Transitland / Nachbarstaat", text: "In einem Nachbarland / Transitland" },
+          { val: "In der Türkei", text: "In der Türkei" },
+          { val: "In Ägypten", text: "In Ägypten" },
+          { val: "In Jordanien / Libanon", text: "In Jordanien oder Libanon" },
+          { val: "Innerhalb der Europäischen Union", text: "Bereits innerhalb der EU" },
+          { val: "Anderer Ort", text: "Anderer Aufenthaltsort" }
+        ]
+      },
+      unhcrStatus: {
+        ar: [
+          { val: "نعم ولدي رقم ملف", text: "نعم، ولدي بطاقة لجوء / رقم تسجيل" },
+          { val: "قدمت وبانتظار موعد", text: "قدمت وبانتظار المقابلة" },
+          { val: "لا، غير مسجل", text: "لا، لست مسجلاً لدى المفوضية" },
+          { val: "لا يمكنني الوصول للمفوضية", text: "لا يمكنني الوصول لمكاتب المفوضية في منطقتي" }
+        ],
+        de: [
+          { val: "Ja, Registrierung vorhanden", text: "Ja, UNHCR-Registrierungsnummer vorhanden" },
+          { val: "Antrag gestellt, warte auf Termin", text: "Antrag gestellt, Termin steht aus" },
+          { val: "Nein, nicht registriert", text: "Nein, nicht beim UNHCR registriert" },
+          { val: "Kein Zugang zur UNHCR-Stelle möglich", text: "Kein Zugang zu UNHCR-Büros in meiner Region" }
+        ]
+      },
+      germanyRelatives: {
+        ar: [
+          { val: "لا يوجد", text: "لا يوجد لدي أقارب بألمانيا" },
+          { val: "زوج / زوجة أو أطفال", text: "زوج / زوجة أو أطفال (درجة أولى)" },
+          { val: "والدين أو إخوة", text: "والدين أو إخوة وأخوات" },
+          { val: "أقارب آخرين أو كفيل ألماني", text: "أقارب آخرين أو صديق يحمل إقامة/جنسية ألمانية" }
+        ],
+        de: [
+          { val: "Keine Verwandten", text: "Keine Verwandten in Deutschland" },
+          { val: "Ehepartner / Kinder (1. Grad)", text: "Ehepartner / minderjährige Kinder (1. Grad)" },
+          { val: "Eltern oder Geschwister", text: "Eltern oder Geschwister" },
+          { val: "Weitere Verwandte oder Bürgen", text: "Entferntere Verwandte oder Bürgen" }
+        ]
+      },
+      germanLevel: {
+        ar: [
+          { val: "لا أعرف الألمانية", text: "لا أعرف الألمانية (مبتدئ تماماً)" },
+          { val: "مستوى A1-A2", text: "أساسيات بسيطة (A1 - A2)" },
+          { val: "مستوى B1-B2", text: "مستوى متوسط وجيد (B1 - B2)" },
+          { val: "مستوى C1-C2", text: "مستوى متقدم ومتقن (C1 - C2)" }
+        ],
+        de: [
+          { val: "Keine Deutschkenntnisse", text: "Keine Vorkenntnisse" },
+          { val: "Niveau A1 - A2", text: "Grundkenntnisse (A1 - A2)" },
+          { val: "Niveau B1 - B2", text: "Gute Mittelstufe (B1 - B2)" },
+          { val: "Niveau C1 - C2", text: "Fließend / Verhandlungssicher (C1 - C2)" }
+        ]
+      },
+      educationLevel: {
+        ar: [
+          { val: "ثانوية أو أقل", text: "ثانوية عامة أو أقل" },
+          { val: "دبلوم تقني / مهني", text: "مهني أو تدريب حرفي معتمد" },
+          { val: "بكالوريوس جامعي", text: "شهادة جامعية (بكالوريوس / ليسانس)" },
+          { val: "ماجستير أو دكتوراه", text: "دراسات عليا (ماجستير / دكتوراه)" },
+          { val: "مهنة طبية أو تمريض", text: "قطاع صحي (أطباء، صيادلة، تمريض)" }
+        ],
+        de: [
+          { val: "Schulabschluss", text: "Schulabschluss oder darunter" },
+          { val: "Berufsausbildung", text: "Abgeschlossene Berufsausbildung / Handwerk" },
+          { val: "Bachelor / Diplom", text: "Hochschulabschluss (Bachelor / Diplom)" },
+          { val: "Master / Promotion", text: "Postgraduiert (Master / Promotion)" },
+          { val: "Gesundheitssektor / Medizin", text: "Medizinischer Sektor (Ärzte, Pflegekräfte)" }
+        ]
+      },
+      idAvailable: {
+        ar: [
+          { val: "جواز سفر ساري المفعول", text: "جواز سفر ساري المفعول" },
+          { val: "جواز سفر منتهي الصلاحية", text: "جواز سفر منتهي الصلاحية" },
+          { val: "بطاقة شخصية / هوية فقط", text: "بطاقة شخصية محلية فقط" },
+          { val: "شهادة ميلاد أو وثائق عائلية", text: "شهادة ميلاد أو قيد عائلي" },
+          { val: "لا أملك وثائق (فقدت بالنزاع)", text: "فقدت وثائقي بسبب الحرب أو النزوح" }
+        ],
+        de: [
+          { val: "Gültiger Reisepass", text: "Gültiger Reisepass vorhanden" },
+          { val: "Abgelaufener Reisepass", text: "Abgelaufener Reisepass vorhanden" },
+          { val: "Nur Personalausweis / ID", text: "Nur nationaler Personalausweis vorhanden" },
+          { val: "Geburtsurkunde / Familienbuch", text: "Geburtsurkunde oder Familienbuch vorhanden" },
+          { val: "Keine Dokumente vorhanden (Verlust)", text: "Dokumente durch Krieg oder Flucht verloren" }
+        ]
+      }
+    };
+
+    function switchLanguage(lang) {
+      currentLang = lang;
+      const html = document.documentElement;
+      
+      if (lang === 'de') {
+        html.setAttribute('dir', 'ltr');
+        html.setAttribute('lang', 'de');
+        document.getElementById('langBtnDe').className = 'px-2.5 py-1 rounded-lg transition bg-white text-slate-900 shadow-sm flex items-center gap-1 font-bold';
+        document.getElementById('langBtnAr').className = 'px-2.5 py-1 rounded-lg transition text-slate-600 hover:text-slate-900 flex items-center gap-1';
+      } else {
+        html.setAttribute('dir', 'rtl');
+        html.setAttribute('lang', 'ar');
+        document.getElementById('langBtnAr').className = 'px-2.5 py-1 rounded-lg transition bg-white text-slate-900 shadow-sm flex items-center gap-1 font-bold';
+        document.getElementById('langBtnDe').className = 'px-2.5 py-1 rounded-lg transition text-slate-600 hover:text-slate-900 flex items-center gap-1';
+      }
+
+      // Update text nodes
+      const dict = i18n[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.innerHTML = dict[key];
+        }
+      });
+
+      // Update placeholders
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (dict[key]) {
+          el.placeholder = dict[key];
+        }
+      });
+
+      // Repopulate select options
+      Object.keys(dropdownOptions).forEach(selectId => {
+        const select = document.getElementById(selectId);
+        if (select && dropdownOptions[selectId][lang]) {
+          const currentVal = select.value;
+          select.innerHTML = '';
+          dropdownOptions[selectId][lang].forEach(item => {
+            const opt = document.createElement('option');
+            opt.value = item.val;
+            opt.textContent = item.text;
+            select.appendChild(opt);
+          });
+          if (currentVal) select.value = currentVal;
+        }
+      });
+
+      // Re-render reviews if on step 4
+      if (currentStep === 4) {
+        populateReview();
+      }
+
+      // Re-render active tracking box if open
+      const trackingCode = document.getElementById('trackingInput').value.trim().toUpperCase();
+      if (trackingCode && mockDatabase[trackingCode]) {
+        checkCaseStatus();
+      }
+    }
+
+    // Mock database for tracking demo cases in both languages
+    const mockDatabase = {
+      'DE-HUM-98214': {
+        name: 'طارق * * * / Tariq * * *',
+        nationality: { ar: 'سوري', de: 'Syrisch' },
+        date: '2026-06-15',
+        statusTitle: {
+          ar: 'المراجعة القانونية والأمنية الأولية قيد الإنجاز',
+          de: 'Rechtliche Vorprüfung und Sicherheitsabgleich in Bearbeitung'
+        },
+        description: {
+          ar: 'تم قبول الوثائق المرفقة مبدئياً وتمرير الملف للقسم الإنساني المختص لدراسة إمكانية القبول تحت البند الإنساني §22.',
+          de: 'Die eingereichten Nachweise wurden erstgeprüft. Der Fall wurde der humanitären Fachkommission zur Aufnahme nach § 22 AufenthG vorgelegt.'
+        },
+        steps: {
+          ar: [
+            { title: 'استلام وتشفير الطلب', done: true, date: '15 يونيو 2026' },
+            { title: 'تقييم درجة الخطر الإنساني', done: true, date: '02 يوليو 2026' },
+            { title: 'المراجعة والتطابق مع البرامج الألمانية', done: true, current: true, date: 'جارٍ العمل' },
+            { title: 'تحديد موعد المقابلة / السفر الإنساني', done: false, date: 'بانتظار الموافقة' }
+          ],
+          de: [
+            { title: 'Eingang & Fallverschlüsselung', done: true, date: '15. Juni 2026' },
+            { title: 'Humanitäre Gefährdungseinstufung', done: true, date: '02. Juli 2026' },
+            { title: 'Abgleich mit Aufnahmeprogrammen (§ 22)', done: true, current: true, date: 'In Bearbeitung' },
+            { title: 'Botschaftstermin / Ausreisegenehmigung', done: false, date: 'Ausstehend' }
+          ]
+        }
+      },
+      'DE-HUM-45120': {
+        name: 'مريم * * * / Maryam * * *',
+        nationality: { ar: 'يمني', de: 'Jemenitisch' },
+        date: '2026-08-01',
+        statusTitle: {
+          ar: 'فحص إثباتات التهديد ومراجعة بيانات العائلة',
+          de: 'Prüfung der Gefährdungsnachweise & Familienzusammenstellung'
+        },
+        description: {
+          ar: 'الملف مسجل بنجاح ويتم التنسيق مع جهات الدعم الإنساني لتوفير المأوى المؤقت وتقييم حالة أفراد الأسرة.',
+          de: 'Das Dossier ist erfasst. Eine Schutzkoordination mit Partnerorganisationen zur vorübergehenden Sicherheit wird vorbereitet.'
+        },
+        steps: {
+          ar: [
+            { title: 'استلام وتشفير الطلب', done: true, date: '01 أغسطس 2026' },
+            { title: 'تقييم درجة الخطر الإنساني', done: true, current: true, date: 'قيد التدقيق' },
+            { title: 'المراجعة والتطابق مع البرامج الألمانية', done: false, date: 'المرحلة التالية' },
+            { title: 'تحديد موعد المقابلة / السفر الإنساني', done: false, date: 'مرحلة لاحقة' }
+          ],
+          de: [
+            { title: 'Eingang & Fallverschlüsselung', done: true, date: '01. August 2026' },
+            { title: 'Humanitäre Gefährdungseinstufung', done: true, current: true, date: 'Laufende Prüfung' },
+            { title: 'Abgleich mit Aufnahmeprogrammen', done: false, date: 'Folgeschritt' },
+            { title: 'Botschaftstermin / Ausreisegenehmigung', done: false, date: 'Ausstehend' }
+          ]
+        }
+      }
+    };
+
+    // Quick Emergency Exit function
+    function emergencyExit() {
+      // Clear session data if any
+      sessionStorage.clear();
+      // Redirect to Google search immediately
+      window.location.replace("https://www.google.com");
+    }
+
+    // Scroll helper
+    function scrollToApply() {
+      const el = document.getElementById('wizard-section');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Wizard Navigation Logic
+    function updateWizardUI() {
+      // Hide all steps
+      for (let i = 1; i <= totalSteps; i++) {
+        const stepEl = document.getElementById(`step-${i}`);
+        const tabEl = document.getElementById(`step-tab-${i}`);
+        if (stepEl) {
+          if (i === currentStep) {
+            stepEl.classList.remove('hidden');
+          } else {
+            stepEl.classList.add('hidden');
+          }
+        }
+        if (tabEl) {
+          const circle = tabEl.querySelector('div');
+          const label = tabEl.querySelector('span');
+          if (i < currentStep) {
+            tabEl.classList.remove('opacity-50');
+            circle.className = 'w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-emerald-500 text-white font-black flex items-center justify-center text-sm mb-2 shadow transition-all';
+            circle.innerHTML = '<i class="fa-solid fa-check"></i>';
+            label.className = 'text-xs font-bold text-white';
+          } else if (i === currentStep) {
+            tabEl.classList.remove('opacity-50');
+            circle.className = 'w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-amber-500 text-slate-950 font-black flex items-center justify-center text-sm mb-2 shadow transition-all';
+            circle.textContent = i;
+            label.className = 'text-xs font-bold text-amber-400';
+          } else {
+            tabEl.classList.add('opacity-50');
+            circle.className = 'w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-slate-800 text-slate-300 font-bold flex items-center justify-center text-sm mb-2 border border-slate-700 transition-all';
+            circle.textContent = i;
+            label.className = 'text-xs font-medium text-slate-400';
+          }
+        }
+      }
+
+      // Button controls
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const submitBtn = document.getElementById('submitBtn');
+
+      if (currentStep === 1) {
+        prevBtn.classList.add('hidden');
+        prevBtn.classList.remove('flex');
+      } else {
+        prevBtn.classList.remove('hidden');
+        prevBtn.classList.add('flex');
+      }
+
+      if (currentStep === totalSteps) {
+        nextBtn.classList.add('hidden');
+        submitBtn.classList.remove('hidden');
+        submitBtn.classList.add('flex');
+        populateReview();
+      } else {
+        nextBtn.classList.remove('hidden');
+        submitBtn.classList.add('hidden');
+        submitBtn.classList.remove('flex');
+      }
+    }
+
+    // Step validation before proceeding
+    function validateCurrentStep() {
+      const isAr = currentLang === 'ar';
+      if (currentStep === 1) {
+        const name = document.getElementById('applicantName').value.trim();
+        const nationality = document.getElementById('applicantNationality').value;
+        const dob = document.getElementById('applicantDob').value;
+        const location = document.getElementById('applicantCurrentLocation').value;
+        const email = document.getElementById('applicantEmail').value.trim();
+
+        if (!name) {
+          showToast(isAr ? 'يرجى كتابة الاسم أو الاسم المستعار للتعريف بملفك.' : 'Bitte geben Sie Ihren Namen oder ein Pseudonym ein.');
+          return false;
+        }
+        if (!nationality) {
+          showToast(isAr ? 'يرجى تحديد جنسيتك أو بلد المنشأ.' : 'Bitte wählen Sie Ihre Staatsangehörigkeit aus.');
+          return false;
+        }
+        if (!dob) {
+          showToast(isAr ? 'يرجى إدخال تاريخ الميلاد.' : 'Bitte geben Sie Ihr Geburtsdatum ein.');
+          return false;
+        }
+        if (!location) {
+          showToast(isAr ? 'يرجى تحديد مكان تواجدك الحالي.' : 'Bitte wählen Sie Ihren derzeitigen Aufenthaltsort.');
+          return false;
+        }
+        if (!email || !email.includes('@')) {
+          showToast(isAr ? 'يرجى إدخال بريد إلكتروني صالح وموثوق للتواصل.' : 'Bitte geben Sie eine gültige E-Mail-Adresse an.');
+          return false;
+        }
+      } else if (currentStep === 2) {
+        const checkedThreats = document.querySelectorAll('input[name="threatReason"]:checked');
+        const threatDesc = document.getElementById('threatDescription').value.trim();
+
+        if (checkedThreats.length === 0) {
+          showToast(isAr ? 'يرجى اختيار سبب واحد على الأقل من أسباب انعدام الأمان.' : 'Bitte wählen Sie mindestens einen Gefährdungsgrund aus.');
+          return false;
+        }
+        if (threatDesc.length < 15) {
+          showToast(isAr ? 'يرجى توضيح وضعك الأمني وشرح التهديد باختصار (15 حرفاً على الأقل).' : 'Bitte beschreiben Sie die Gefährdungslage (mindestens 15 Zeichen).');
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function populateReview() {
+      const isAr = currentLang === 'ar';
+      document.getElementById('revName').textContent = document.getElementById('applicantName').value || (isAr ? 'غير محدد' : 'Nicht angegeben');
+      document.getElementById('revNationality').textContent = document.getElementById('applicantNationality').value || (isAr ? 'غير محدد' : 'Nicht angegeben');
+      document.getElementById('revLocation').textContent = document.getElementById('applicantCurrentLocation').value || (isAr ? 'غير محدد' : 'Nicht angegeben');
+      document.getElementById('revEmail').textContent = document.getElementById('applicantEmail').value || (isAr ? 'غير محدد' : 'Nicht angegeben');
+      
+      const threats = Array.from(document.querySelectorAll('input[name="threatReason"]:checked')).map(cb => cb.value);
+      document.getElementById('revThreats').textContent = threats.join('، ') || (isAr ? 'لم يُحدد' : 'Keine ausgewählt');
+      
+      const family = document.getElementById('familyMembers').value;
+      if (family > 0) {
+        document.getElementById('revFamily').textContent = isAr ? `${family} أفراد` : `${family} Person(en)`;
+      } else {
+        document.getElementById('revFamily').textContent = isAr ? 'شخص مفرد بدون مرافقين' : 'Einzelperson ohne Begleitung';
+      }
+    }
+
+    // File upload simulation
+    function handleFileUpload(event) {
+      const files = event.target.files;
+      const listContainer = document.getElementById('fileUploadList');
+      for (let i = 0; i < files.length; i++) {
+        uploadedFiles.push(files[i].name);
+        const tag = document.createElement('span');
+        tag.className = 'bg-slate-200 text-slate-800 px-2.5 py-1 rounded-lg flex items-center gap-1.5';
+        tag.innerHTML = `<i class="fa-solid fa-file-shield text-amber-600"></i> ${files[i].name}`;
+        listContainer.appendChild(tag);
+      }
+      showToast(currentLang === 'ar' ? `تم إضافة ${files.length} ملفات مشفرة للملف.` : `${files.length} Datei(en) verschlüsselt angehängt.`);
+    }
+
+    // Submission handler
+    function submitApplication() {
+      const legal = document.getElementById('consentLegal').checked;
+      const privacy = document.getElementById('consentPrivacy').checked;
+      const citizenship = document.getElementById('consentCitizenship').checked;
+
+      if (!legal || !privacy || !citizenship) {
+        showToast(currentLang === 'ar' ? 'يرجى الموافقة على جميع الإقرارات والتعهدات في أسفل الصفحة لإتمام التسجيل.' : 'Bitte bestätigen Sie alle rechtlichen Erklärungen am Seitenende.');
+        return;
+      }
+
+      // Generate Reference Code
+      const randomNum = Math.floor(10000 + Math.random() * 90000);
+      generatedReference = `DE-HUM-2026-${randomNum}`;
+
+      const applicantName = document.getElementById('applicantName').value;
+      const nationality = document.getElementById('applicantNationality').value;
+
+      mockDatabase[generatedReference] = {
+        name: applicantName,
+        nationality: { ar: nationality, de: nationality },
+        date: new Date().toISOString().split('T')[0],
+        statusTitle: {
+          ar: 'تم استلام الملف الأولي وتشفير البيانات',
+          de: 'Schutzdossier eingegangen & verschlüsselt'
+        },
+        description: {
+          ar: 'تم تسجيل طلبك ضمن سجلات الحماية الإنسانية الأولية. سيتم تدقيق البيانات والتأكد من استيفاء معايير الأمان وبرامج إعادة التوطين الألمانية.',
+          de: 'Ihr Gesuch ist erfolgreich im Ersterfassungssystem eingegangen. Die Falldaten werden nun auf Konformität mit humanitären Aufnahmeprogrammen geprüft.'
+        },
+        steps: {
+          ar: [
+            { title: 'استلام وتشفير الطلب', done: true, current: true, date: 'اليوم' },
+            { title: 'تقييم درجة الخطر الإنساني', done: false, date: 'خلال 14 يوم' },
+            { title: 'المراجعة والتطابق مع البرامج الألمانية', done: false, date: 'المرحلة التالية' },
+            { title: 'تحديد موعد المقابلة / السفر الإنساني', done: false, date: 'بانتظار الاعتماد' }
+          ],
+          de: [
+            { title: 'Eingang & Fallverschlüsselung', done: true, current: true, date: 'Heute' },
+            { title: 'Humanitäre Gefährdungseinstufung', done: false, date: 'Binnen 14 Tagen' },
+            { title: 'Abgleich mit Aufnahmeprogrammen', done: false, date: 'Folgeschritt' },
+            { title: 'Botschaftstermin / Ausreisegenehmigung', done: false, date: 'Ausstehend' }
+          ]
+        }
+      };
+
+      // Show Success Modal
+      document.getElementById('modalRefCode').textContent = generatedReference;
+      document.getElementById('successModal').classList.remove('hidden');
+    }
+
+    function copyReferenceCode() {
+      const text = document.getElementById('modalRefCode').textContent.trim();
+      const tempInput = document.createElement("input");
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+      
+      const copyBtn = document.getElementById('copyBtnText');
+      const prevText = copyBtn.textContent;
+      copyBtn.textContent = currentLang === 'ar' ? 'تم النسخ!' : 'Kopiert!';
+      showToast(currentLang === 'ar' ? 'تم نسخ الرمز المرجعي إلى الحافظة.' : 'Aktenzeichen in die Zwischenablage kopiert.');
+      setTimeout(() => { copyBtn.textContent = prevText; }, 2500);
+    }
+
+    function checkCaseStatus() {
+      const code = document.getElementById('trackingInput').value.trim().toUpperCase();
+      const resultBox = document.getElementById('trackingResultBox');
+      const isAr = currentLang === 'ar';
+
+      if (!code) {
+        showToast(isAr ? 'يرجى إدخال رقم مرجعي صالح للاستعلام.' : 'Bitte geben Sie ein gültiges Aktenzeichen ein.');
+        return;
+      }
+
+      const caseData = mockDatabase[code];
+
+      if (!caseData) {
+        resultBox.classList.remove('hidden');
+        resultBox.innerHTML = `
+          <div class="bg-rose-950/40 border border-rose-800 rounded-2xl p-5 text-center">
+            <i class="fa-solid fa-triangle-exclamation text-rose-400 text-2xl mb-2"></i>
+            <h4 class="text-white font-bold text-sm">${isAr ? 'الرقم المرجعي غير مسجل' : 'Aktenzeichen nicht gefunden'}</h4>
+            <p class="text-slate-300 text-xs mt-1">${isAr ? `لم نتمكن من العثور على أي ملف مرتبط بالرمز (${code}). يرجى التأكد من كتابة الرمز بشكل دقيق شاملاً الأحرف والشرطات.` : `Kein registrierter Fall unter dem Aktenzeichen (${code}) gefunden. Bitte prüfen Sie die Eingabe.`}</p>
+          </div>
+        `;
+        return;
+      }
+
+      const activeSteps = (caseData.steps && caseData.steps[currentLang]) ? caseData.steps[currentLang] : (caseData.steps.ar || []);
+      const statusTitle = (caseData.statusTitle && caseData.statusTitle[currentLang]) ? caseData.statusTitle[currentLang] : caseData.statusTitle;
+      const statusDesc = (caseData.description && caseData.description[currentLang]) ? caseData.description[currentLang] : caseData.description;
+      const nat = (caseData.nationality && caseData.nationality[currentLang]) ? caseData.nationality[currentLang] : caseData.nationality;
+
+      // Build Timeline
+      let stepsHtml = '';
+      activeSteps.forEach((step, idx) => {
+        let dotColor = 'bg-slate-700 text-slate-400 border-slate-600';
+        let titleColor = 'text-slate-400';
+        let icon = `<span class="text-xs font-bold">${idx + 1}</span>`;
+
+        if (step.done) {
+          dotColor = 'bg-emerald-500 text-slate-950 border-emerald-400 font-bold';
+          titleColor = 'text-white font-bold';
+          icon = '<i class="fa-solid fa-check text-xs"></i>';
+        }
+        if (step.current) {
+          dotColor = 'bg-amber-500 text-slate-950 border-amber-300 ring-4 ring-amber-500/20 font-bold';
+          titleColor = 'text-amber-400 font-bold';
+          icon = '<i class="fa-solid fa-spinner fa-spin text-xs"></i>';
         }
 
-        // Close dropdown when clicking outside
-        window.addEventListener('click', function(e) {
-            const btn = document.getElementById('langMenuBtn');
-            const dropdown = document.getElementById('langDropdown');
-            if (btn && dropdown && !btn.contains(e.target) && !dropdown.contains(e.target)) {
-                dropdown.classList.add('hidden');
-            }
-        });
+        stepsHtml += `
+          <div class="flex items-start gap-3 relative pb-6 last:pb-0">
+            ${idx !== activeSteps.length - 1 ? '<div class="absolute rtl:right-4 ltr:left-4 top-8 bottom-0 w-0.5 bg-slate-700"></div>' : ''}
+            <div class="w-8 h-8 rounded-full ${dotColor} border flex items-center justify-center flex-shrink-0 z-10">
+              ${icon}
+            </div>
+            <div>
+              <h5 class="text-sm ${titleColor}">${step.title}</h5>
+              <span class="text-xs text-slate-400">${step.date}</span>
+            </div>
+          </div>
+        `;
+      });
 
-        function changeLanguage(lang) {
-            currentLang = lang;
-            document.getElementById('langDropdown').classList.add('hidden');
-            
-            // Set HTML Direction & Lang attribute
-            const html = document.documentElement;
-            html.setAttribute('lang', lang);
-            if (lang === 'ar') {
-                html.setAttribute('dir', 'rtl');
-                document.getElementById('currentLangLabel').innerText = 'العربية';
-            } else if (lang === 'de') {
-                html.setAttribute('dir', 'ltr');
-                document.getElementById('currentLangLabel').innerText = 'Deutsch';
-            } else {
-                html.setAttribute('dir', 'ltr');
-                document.getElementById('currentLangLabel').innerText = 'English';
-            }
+      resultBox.classList.remove('hidden');
+      resultBox.innerHTML = `
+        <div class="bg-slate-800/90 border border-slate-700 rounded-2xl p-6 space-y-6">
+          <div class="flex flex-wrap justify-between items-center gap-3 border-b border-slate-700 pb-4">
+            <div>
+              <span class="text-xs text-amber-400 font-bold">${isAr ? 'ملف نشط ومحمي' : 'Aktives, geschütztes Verfahren'}</span>
+              <h4 class="text-lg font-black text-white mt-0.5">${isAr ? 'صاحب الملف:' : 'Antragsteller:'} ${caseData.name} (${nat})</h4>
+              <span class="text-xs text-slate-400 font-mono">${isAr ? 'الرقم المرجعي:' : 'Aktenzeichen:'} ${code}</span>
+            </div>
+            <div class="rtl:text-left ltr:text-right text-xs bg-slate-900 px-3 py-2 rounded-xl border border-slate-700">
+              <span class="text-slate-400 block">${isAr ? 'تاريخ التسجيل:' : 'Registrierungsdatum:'}</span>
+              <span class="text-white font-bold">${caseData.date}</span>
+            </div>
+          </div>
 
-            // Update all DOM Elements with current language strings
-            const dict = i18n[lang];
-            for (const key in dict) {
-                const el = document.getElementById(key);
-                if (el) {
-                    el.innerText = dict[key];
-                }
-            }
+          <div class="bg-slate-900/80 p-4 rounded-xl rtl:border-r-4 ltr:border-l-4 border-amber-400">
+            <h5 class="text-sm font-bold text-amber-400">${statusTitle}</h5>
+            <p class="text-xs text-slate-300 mt-1 leading-relaxed">${statusDesc}</p>
+          </div>
 
-            // Update placeholder texts dynamically
-            if (lang === 'ar') {
-                document.getElementById('fullName').placeholder = "مثال: محمد أحمد العلي";
-                document.getElementById('reasonDetails').placeholder = "اكتب بالتفصيل الأسباب التي تجعلك في خطر، أو التهديدات التي تعرضت لها...";
-            } else if (lang === 'de') {
-                document.getElementById('fullName').placeholder = "z.B. Max Mustermann";
-                document.getElementById('reasonDetails').placeholder = "Beschreiben Sie detailliert die Risiken und Gefahren...";
-            } else {
-                document.getElementById('fullName').placeholder = "e.g. John Doe";
-                document.getElementById('reasonDetails').placeholder = "Detail the threats or risks you are facing...";
-            }
+          <div>
+            <h5 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">${isAr ? 'مراحل سير ملف الحماية:' : 'Verfahrensabschnitte:'}</h5>
+            <div class="space-y-1">
+              ${stepsHtml}
+            </div>
+          </div>
+        </div>
+      `;
+    }
 
-            renderFileList();
-        }
-
-        // --- Dark Mode Toggle ---
-        function toggleDarkMode() {
-            const html = document.documentElement;
-            const icon = document.getElementById('themeIcon');
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                icon.className = 'fa-solid fa-moon';
-            } else {
-                html.classList.add('dark');
-                icon.className = 'fa-solid fa-sun text-amber-400';
-            }
-        }
-
-        // --- Emergency Safety Exit ---
-        function quickSafetyExit() {
-            // Instantly redirect to neutral news or search site
-            window.location.replace("https://www.google.com");
-        }
-
-        // --- Wizard Navigation Logic ---
-        function goToStep(step) {
-            if (step < 1 || step > 4) return;
-            
-            // Basic validation before advancing forward
-            if (step > currentStep) {
-                if (currentStep === 1) {
-                    const name = document.getElementById('fullName').value.trim();
-                    const email = document.getElementById('email').value.trim();
-                    if (!name || !email) {
-                        alert(currentLang === 'ar' ? 'يرجى ملء الاسم الكامل والبريد الإلكتروني للبدء.' : 'Please enter full name and email.');
-                        return;
-                    }
-                }
-            }
-
-            // Hide all steps
-            for (let i = 1; i <= 4; i++) {
-                document.getElementById(`formStep${i}`).classList.add('hidden');
-                
-                const circle = document.getElementById(`stepCircle${i}`);
-                const label = document.getElementById(`stepLabel${i}`);
-                
-                if (i < step) {
-                    // Completed Step
-                    circle.className = "w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center ring-4 ring-slate-50 dark:ring-slate-950 transition";
-                    circle.innerHTML = `<i class="fa-solid fa-check text-sm"></i>`;
-                    if (label) label.className = "text-xs font-semibold mt-2 text-emerald-600 dark:text-emerald-400";
-                } else if (i === step) {
-                    // Active Step
-                    circle.className = "w-10 h-10 rounded-full bg-brand-600 text-white font-bold flex items-center justify-center ring-4 ring-slate-50 dark:ring-slate-950 transition shadow-lg shadow-brand-500/30";
-                    circle.innerText = i;
-                    if (label) label.className = "text-xs font-semibold mt-2 text-brand-600 dark:text-brand-400";
-                } else {
-                    // Inactive Step
-                    circle.className = "w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500 font-bold flex items-center justify-center ring-4 ring-slate-50 dark:ring-slate-950 transition";
-                    circle.innerText = i;
-                    if (label) label.className = "text-xs font-semibold mt-2 text-slate-400";
-                }
-            }
-
-            // Show current step
-            document.getElementById(`formStep${step}`).classList.remove('hidden');
-            currentStep = step;
-
-            // Update Progress Bar
-            const progress = document.getElementById('stepProgress');
-            const percent = ((step - 1) / 3) * 100;
-            progress.style.width = `${percent}%`;
-
-            // Navigation Buttons visibility
-            const btnPrev = document.getElementById('btnPrev');
-            const btnNext = document.getElementById('btnNext');
-            const btnSubmit = document.getElementById('btnSubmit');
-
-            if (step === 1) {
-                btnPrev.classList.add('hidden');
-                btnNext.classList.remove('hidden');
-                btnSubmit.classList.add('hidden');
-            } else if (step === 4) {
-                btnPrev.classList.remove('hidden');
-                btnNext.classList.add('hidden');
-                btnSubmit.classList.remove('hidden');
-                updateSummaryData();
-            } else {
-                btnPrev.classList.remove('hidden');
-                btnNext.classList.remove('hidden');
-                btnSubmit.classList.add('hidden');
-            }
-
-            window.scrollTo({ top: 200, behavior: 'smooth' });
-        }
-
-        function changeStep(delta) {
-            goToStep(currentStep + delta);
-        }
-
-        // --- File Attachment & Image Preview Engine ---
-        function handleFileSelect(event) {
-            const files = Array.from(event.target.files);
-            processFiles(files);
-        }
-
-        // Drag & Drop event handlers
-        const dropZone = document.getElementById('dropZone');
-        ['dragenter', 'dragover'].forEach(eventName => {
-            dropZone.addEventListener(eventName, (e) => {
-                e.preventDefault();
-                dropZone.classList.add('bg-brand-100/50', 'dark:bg-brand-900/30');
-            }, false);
-        });
-
-        ['dragleave', 'drop'].forEach(eventName => {
-            dropZone.addEventListener(eventName, (e) => {
-                e.preventDefault();
-                dropZone.classList.remove('bg-brand-100/50', 'dark:bg-brand-900/30');
-            }, false);
-        });
-
-        dropZone.addEventListener('drop', (e) => {
-            const files = Array.from(e.dataTransfer.files);
-            processFiles(files);
-        });
-
-        function processFiles(files) {
-            files.forEach(file => {
-                if (file.size > 10 * 1024 * 1024) {
-                    alert(`${file.name} يتجاوز الحجم المسموح (10MB)`);
-                    return;
-                }
-
-                const fileObj = {
-                    id: 'file_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
-                    name: file.name,
-                    size: (file.size / (1024 * 1024)).toFixed(2) + ' MB',
-                    type: file.type,
-                    rawFile: file,
-                    previewUrl: null
-                };
-
-                if (file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        fileObj.previewUrl = e.target.result;
-                        renderFileList();
-                    };
-                    reader.readAsDataURL(file);
-                }
-
-                attachedFiles.push(fileObj);
-            });
-
-            renderFileList();
-        }
-
-        function removeFile(fileId) {
-            attachedFiles = attachedFiles.filter(f => f.id !== fileId);
-            renderFileList();
-        }
-
-        function renderFileList() {
-            const container = document.getElementById('fileListGrid');
-            const emptyNotice = document.getElementById('emptyFilesNotice');
-            const aiVisionCard = document.getElementById('aiVisionCard');
-
-            if (attachedFiles.length === 0) {
-                container.innerHTML = `
-                    <div id="emptyFilesNotice" class="col-span-full py-6 text-center text-slate-400 text-sm border border-dashed border-slate-200 dark:border-slate-800 rounded-xl">
-                        <i class="fa-regular fa-image text-2xl block mb-2 opacity-50"></i>
-                        <span>${i18n[currentLang].noFilesYet}</span>
-                    </div>`;
-                aiVisionCard.classList.add('hidden');
-                return;
-            }
-
-            // Show AI Document Vision card if there is at least one image
-            const hasImage = attachedFiles.some(f => f.type.startsWith('image/'));
-            if (hasImage) {
-                aiVisionCard.classList.remove('hidden');
-            } else {
-                aiVisionCard.classList.add('hidden');
-            }
-
-            container.innerHTML = '';
-            attachedFiles.forEach(file => {
-                const card = document.createElement('div');
-                card.className = "relative group p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-3 overflow-hidden transition hover:border-brand-500";
-                
-                let thumbnail = `<div class="w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 font-bold"><i class="fa-solid fa-file-pdf text-red-500 text-xl"></i></div>`;
-                
-                if (file.previewUrl) {
-                    thumbnail = `<img src="${file.previewUrl}" class="w-12 h-12 object-cover rounded-lg border border-slate-200 dark:border-slate-700" alt="preview">`;
-                }
-
-                card.innerHTML = `
-                    ${thumbnail}
-                    <div class="flex-grow min-w-0">
-                        <p class="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">${file.name}</p>
-                        <p class="text-[10px] text-slate-400 mt-0.5">${file.size}</p>
-                    </div>
-                    <button type="button" onclick="removeFile('${file.id}')" class="text-slate-400 hover:text-red-500 p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/50 transition">
-                        <i class="fa-solid fa-trash-can text-sm"></i>
-                    </button>
-                `;
-
-                container.appendChild(card);
-            });
-        }
-
-        // --- AI Gemini API Features (Document Vision & Text Assistant) ---
-        async function generateAISummary() {
-            const details = document.getElementById('reasonDetails');
-            const btn = document.getElementById('btnAISummary');
-            const originalText = btn.innerText;
-            
-            btn.innerText = currentLang === 'ar' ? "جاري الصياغة..." : "Formulating...";
-            btn.disabled = true;
-
-            const prompt = "Act as an expert humanitarian officer. Summarize and organize this asylum request into a clear, professional, official paragraph in Arabic highlighting personal safety concerns, risk factor, and need for protection: " + (details.value || "مواطن يواجه مخاطر في منطقة نزاع ويرغب في طلب الحماية الألمانية والمنحة المباشرة.");
-
-            try {
-                const apiKey = ""; // API Key auto-injected in runtime
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: prompt }] }]
-                    })
-                });
-
-                const data = await response.json();
-                const resultText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-
-                if (resultText) {
-                    details.value = resultText;
-                }
-            } catch (err) {
-                console.error("AI Assistance Error:", err);
-                // Fallback default formulation if API unavailable
-                details.value = "أواجه ظروفاً أمنية صعبة وضغوطات تحول دون إمكانيتي بالعيش بسلام، وأحتاج إلى الحماية الدولية والمنحة الألمانية لضمان السلامة الشخصية والاستقرار القانوني.";
-            } finally {
-                btn.innerText = originalText;
-                btn.disabled = false;
-            }
-        }
-
-        async function analyzeFirstImageWithGemini() {
-            const firstImg = attachedFiles.find(f => f.type.startsWith('image/'));
-            if (!firstImg) return;
-
-            const resultDiv = document.getElementById('aiAnalysisResult');
-            const btnScan = document.getElementById('btnScanText');
-            
-            resultDiv.classList.remove('hidden');
-            resultDiv.innerHTML = `<div class="flex items-center gap-2"><i class="fa-solid fa-circle-notch fa-spin text-purple-400"></i> <span>جاري فحص المستند بالذكاء الاصطناعي واستخراج البيانات...</span></div>`;
-
-            try {
-                // Convert image preview URL to base64
-                const base64Data = firstImg.previewUrl.split(',')[1];
-                const apiKey = "";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-
-                const payload = {
-                    contents: [{
-                        role: "user",
-                        parts: [
-                            { text: "Examine this image document. Extract key info (Name, Document Type, Language, Summary of content) and translate key details into Arabic concisely." },
-                            { inlineData: { mimeType: firstImg.type || "image/jpeg", data: base64Data } }
-                        ]
-                    }]
-                };
-
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                const result = await response.json();
-                const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
-
-                if (text) {
-                    resultDiv.innerHTML = `<p class="font-bold text-purple-300 mb-1">نتائج الفحص والترجمة الآلية:</p><p class="whitespace-pre-wrap">${text}</p>`;
-                } else {
-                    resultDiv.innerText = "تعذر قراءة نص المرفق. تم اعتماد المستند وإرفاقه بنجاح.";
-                }
-
-            } catch (error) {
-                console.error(error);
-                resultDiv.innerText = "تم إرفاق المستند بنجاح وتحويله للعرض على اللجنة المختصة مباشرة.";
-            }
-        }
-
-        // --- Step 4 Summary Populator ---
-        function updateSummaryData() {
-            document.getElementById('sumName').innerText = document.getElementById('fullName').value || '-';
-            document.getElementById('sumEmail').innerText = document.getElementById('email').value || '-';
-            document.getElementById('sumPhone').innerText = document.getElementById('phone').value || '-';
-            document.getElementById('sumCountry').innerText = document.getElementById('currentCountry').value || '-';
-            
-            const fileText = currentLang === 'ar' ? `${attachedFiles.length} ملفات / صور` : `${attachedFiles.length} file(s) attached`;
-            document.getElementById('sumFilesCount').innerText = fileText;
-        }
-
-        // --- Form Submission Handle ---
-        function handleFormSubmit(e) {
-            e.preventDefault();
-
-            // Random reference code generator
-            const randNum = Math.floor(10000 + Math.random() * 90000);
-            document.getElementById('refCodeDisplay').innerText = `DE-2026-${randNum}-SEC`;
-
-            // Open Modal
-            document.getElementById('successModal').classList.remove('hidden');
-        }
-
-        function closeModalAndReset() {
-            document.getElementById('successModal').classList.add('hidden');
-            document.getElementById('grantForm').reset();
-            attachedFiles = [];
-            renderFileList();
-            goToStep(1);
-        }
-
-        // Initialize default step on load
-        window.onload = function() {
-            goToStep(1);
-        };
-    </script>
+    // Initialize dropdown options on load
+    window.addEventListener('DOMContentLoaded', () => {
+      switchLanguage('ar');
+    });
+  </script>
 </body>
 </html>
